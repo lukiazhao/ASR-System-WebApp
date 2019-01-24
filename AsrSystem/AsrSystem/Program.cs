@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using AsrSystem.Data;
-using AsrSystem.Models;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -18,17 +21,15 @@ namespace AsrSystem
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-
                 try
                 {
-                    //services.GetRequiredService<MvcMovieContext>().Database.Migrate();
-                    services.GetRequiredService<AsrSystemContext>().Database.Migrate();
-                    SeedData.Initialize(services);
+                    SeedData.Initialise(services).Wait();
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(e, "An error occurred seeding the DB.");
+                    services.GetRequiredService<ILogger<Program>>().
+                        LogError(ex, "An error occurred while seeding the database.");
+                    throw;
                 }
             }
 

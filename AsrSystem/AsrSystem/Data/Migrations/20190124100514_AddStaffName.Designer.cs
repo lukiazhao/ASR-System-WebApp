@@ -4,14 +4,16 @@ using AsrSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AsrSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190124100514_AddStaffName")]
+    partial class AddStaffName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,8 +54,6 @@ namespace AsrSystem.Data.Migrations
 
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<string>("StaffID");
-
                     b.Property<string>("StudentID");
 
                     b.Property<bool>("TwoFactorEnabled");
@@ -71,8 +71,6 @@ namespace AsrSystem.Data.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("StaffID");
-
                     b.HasIndex("StudentID");
 
                     b.ToTable("AspNetUsers");
@@ -82,8 +80,6 @@ namespace AsrSystem.Data.Migrations
                 {
                     b.Property<string>("StaffID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Email");
 
                     b.Property<string>("Name");
 
@@ -216,10 +212,6 @@ namespace AsrSystem.Data.Migrations
 
             modelBuilder.Entity("AsrSystem.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("AsrSystem.Models.Staff", "Staff")
-                        .WithMany()
-                        .HasForeignKey("StaffID");
-
                     b.HasOne("AsrSystem.Models.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentID");

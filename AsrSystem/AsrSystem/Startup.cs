@@ -35,24 +35,20 @@ namespace AsrSystem
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<AsrSystemContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<User>(options =>
+            //services.AddDefaultIdentity<IdentityUser>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 3;
-                options.Password.RequireDigit = options.Password.RequireNonAlphanumeric 
-                = options.Password.RequireUppercase = options.Password.RequireLowercase = false;
-                 
-            }).AddEntityFrameworkStores<AsrSystemContext>();
+                options.Password.RequireDigit = options.Password.RequireNonAlphanumeric =
+                    options.Password.RequireUppercase = options.Password.RequireLowercase = false;
+            }).AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,7 +75,7 @@ namespace AsrSystem
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Slots}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
