@@ -11,111 +11,91 @@ namespace AsrSystem.Data
 {
     public class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        public static async Task Initialise(IServiceProvider serviceProvider)
         {
-            using (var userManager = serviceProvider.GetRequiredService<UserManager<User>>())
-            using (var context = new AsrSystemContext(serviceProvider.GetRequiredService<DbContextOptions<AsrSystemContext>>()))
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            // ADD role to roleManager
+            var roles = new[] { Constants.StudentRole, Constants.StaffRole };
+            foreach (var role in roles)
             {
-                InitiliseUsers(userManager);
-                InitialiseAsrData(context, userManager);
-            }
-        }
-
-        private static void InitiliseUsers(UserManager<User> userManager)
-        {
-            if (userManager.Users.Any())
-            {
-                return;
-            }
-
-            CreateUser(userManager, "e12345@rmit.edu.au");
-            CreateUser(userManager, "e56789@rmit.edu.au");
-            CreateUser(userManager, "s1234567@student.rmit.edu.au");
-            CreateUser(userManager, "s4567890@student.rmit.edu.au");
-        }
-
-        private static void CreateUser(UserManager<User> userManager, string userName) => userManager.CreateAsync(new User
-        {
-            UserName = userName,
-            Email = userName
-        }, "abc123").Wait();
-
-        private static void InitialiseAsrData(AsrSystemContext context, UserManager<User> userManager)
-        {
-            if (context.Room.Any())
-                return;
-            context.Room.AddRange(
-                new Room { RoomID = "A" },
-                new Room { RoomID = "B" },
-                new Room { RoomID = "C" },
-                new Room { RoomID = "D" }
-            );
-
-            CreateStaff(context, "e12345", "Matt");
-            CreateStaff(context, "e56789", "Matt");
-
-            CreateStudent(context, "s1234567", "Kevin");
-            CreateStudent(context, "s4567890", "Olivier");
-
-            context.Slot.AddRange(
-                new Slot
+                if (!await roleManager.RoleExistsAsync(role))
                 {
-                    RoomID = "A",
-                    StartTime = new DateTime(2019, 1, 30),
-                    StaffID = "e12345"
-                },
-                new Slot
-                {
-                    RoomID = "B",
-                    StartTime = new DateTime(2019, 1, 30),
-                    StaffID = "e56789",
-                    StudentID = "s1234567"
-                },
-                new Slot
-                {
-                    RoomID = "C",
-                    StartTime = new DateTime(2019, 1, 30),
-                    StaffID = "e12345",
+                    await roleManager.CreateAsync(new IdentityRole { Name = role });
                 }
-            );
+            }
+
+            var userManager = serviceProvider.GetService<UserManager<ApplicationUser>>();
+            await CreateUserAndEnsureUserHasRole(userManager, "s1234567@example.com", Constants.StudentRole);
+            await CreateUserAndEnsureUserHasRole(userManager, "e12345@example.com", Constants.StaffRole);
+            //await EnsureUserHasRole(userManager, "matthew.bolger@rmit.edu.au", Constants.StaffRole);
+
+            var context = new ApplicationDbContext(serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>());
+            await InitiailiseAsrDataAsync(context, userManager);
+        }   
+
+        public static async Task InitiailiseAsrDataAsync(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        {
+            //await context.Student.AddAsync(new Student
+            //{
+            //    StudentID = "s123",
+            //    Name = "Naaaaame"
+            //});
+
+            if (await context.Staff.FindAsync("e12345") == null)
+            {
+                await context.Staff.AddAsync(new Staff
+                {
+                    StaffID = "e12345",
+                    Name = "Johnny",
+                    Email = "e12345@staff.rmit.edu.au"
+                });
+            }
+
+            if (await context.Student.FindAsync("s1234567") == null)
+            {
+                await context.Student.AddAsync(new Student
+                {
+                    StudentID = "s1234567",
+                    Name = "Lukia"
+                });
+            }
+
             context.SaveChanges();
+            //await UpdateUserAsync(userManager, "student@example.com", "s123");
+            //await UpdateUserAsync(userManager, "e12345@example.com", "e12345");
+            //await UpdateUserAsync(userManager, "s1234567@example.com", "s1234567");
 
-            UpdateUser(userManager, "e12345@rmit.edu.au", "e12345");
-            UpdateUser(userManager, "e56789@rmit.edu.au", "e56789");
-            UpdateUser(userManager, "s1234567@student.rmit.edu.au", "s1234567");
-            UpdateUser(userManager, "s4567890@student.rmit.edu.au", "s4567890");
         }
 
-
-        private static void CreateStaff(AsrSystemContext context, string id, string name)
+        public static async Task UpdateUserAsync(UserManager<ApplicationUser> userManager, string userName, string userId)
         {
-            context.Staff.Add(new Staff
-            {
-                StaffID = id,
-                Email = id + "@rmit.edu.au",
-                Name = name
-            });
-        }
-
-        private static void CreateStudent(AsrSystemContext context, string id, string name)
-        {
-            context.Student.Add(new Student
-            {
-                StudentID = id,
-                Email = id + "@student.rmit.edu.au",
-                Name = name
-            });
-        }
-
-        private static void UpdateUser(UserManager<User> userManager, string userName, string id)
-        {
-            var user = userManager.FindByNameAsync(userName).Result;
+            var user = await userManager.FindByNameAsync(userName);
             if (user.UserName.StartsWith('e'))
-                user.StaffID = id;
-            if (user.UserName.StartsWith('s'))
-                user.StudentID = id;
+            {
+                user.StaffID = userId;
+            }
 
-            userManager.UpdateAsync(user).Wait();
+            if (user.UserName.StartsWith('s'))
+            {
+                user.StudentID = userId;
+            }
+            await userManager.UpdateAsync(user);
+        }
+
+        private static async Task CreateUserAndEnsureUserHasRole(
+            UserManager<ApplicationUser> userManager, string userName, string role)
+        {
+            if (await userManager.FindByNameAsync(userName) == null)
+                await userManager.CreateAsync(new ApplicationUser { UserName = userName, Email = userName }, "abc123");
+            await EnsureUserHasRole(userManager, userName, role);
+        }
+
+        private static async Task EnsureUserHasRole(UserManager<ApplicationUser> userManager, string userName, string role)
+        {
+            var user = await userManager.FindByNameAsync(userName);
+            if (user != null && !await userManager.IsInRoleAsync(user, role))
+                await userManager.AddToRoleAsync(user, role);
         }
     }
 }
