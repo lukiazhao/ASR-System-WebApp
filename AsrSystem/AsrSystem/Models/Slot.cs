@@ -12,6 +12,8 @@ namespace AsrSystem.Models
         public string RoomID { get; set; }    
         public virtual Room Room { get; set; }
 
+        [Required]
+        [Display(Name = "Start Time")]   
         public DateTime StartTime { get; set; }
 
         [Required]

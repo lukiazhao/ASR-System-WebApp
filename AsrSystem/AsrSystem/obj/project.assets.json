@@ -12539,11 +12539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WDT\\Assignment 2\\AsrSystem\\AsrSystem\\AsrSystem.csproj",
+      "projectUniqueName": "D:\\WDT\\AsrSystemApp\\AsrSystem\\AsrSystem\\AsrSystem.csproj",
       "projectName": "AsrSystem",
-      "projectPath": "D:\\WDT\\Assignment 2\\AsrSystem\\AsrSystem\\AsrSystem.csproj",
+      "projectPath": "D:\\WDT\\AsrSystemApp\\AsrSystem\\AsrSystem\\AsrSystem.csproj",
       "packagesPath": "C:\\Users\\Jingyi Zhao\\.nuget\\packages\\",
-      "outputPath": "D:\\WDT\\Assignment 2\\AsrSystem\\AsrSystem\\obj\\",
+      "outputPath": "D:\\WDT\\AsrSystemApp\\AsrSystem\\AsrSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
