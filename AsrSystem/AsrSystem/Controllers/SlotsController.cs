@@ -9,22 +9,23 @@ using AsrSystem.Models;
 
 namespace AsrSystem.Controllers
 {
-    public class StaffsController : Controller
+    public class SlotsController : Controller
     {
         private readonly AsrSystemContext _context;
 
-        public StaffsController(AsrSystemContext context)
+        public SlotsController(AsrSystemContext context)
         {
             _context = context;
         }
 
-        // GET: Staffs
+        // GET: Slots
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Staff.ToListAsync());
+            var asrSystemContext = _context.Slot.Include(s => s.Staff).Include(s => s.Student);
+            return View(await asrSystemContext.ToListAsync());
         }
 
-        // GET: Staffs/Details/5
+        // GET: Slots/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -32,39 +33,45 @@ namespace AsrSystem.Controllers
                 return NotFound();
             }
 
-            var staff = await _context.Staff
-                .FirstOrDefaultAsync(m => m.StaffID == id);
-            if (staff == null)
+            var slot = await _context.Slot
+                .Include(s => s.Staff)
+                .Include(s => s.Student)
+                .FirstOrDefaultAsync(m => m.RoomID == id);
+            if (slot == null)
             {
                 return NotFound();
             }
 
-            return View(staff);
+            return View(slot);
         }
 
-        // GET: Staffs/Create
+        // GET: Slots/Create
         public IActionResult Create()
         {
+            ViewData["StaffID"] = new SelectList(_context.Staff, "StaffID", "StaffID");
+            ViewData["StudentID"] = new SelectList(_context.Student, "StudentID", "StudentID");
             return View();
         }
 
-        // POST: Staffs/Create
+        // POST: Slots/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StaffID,Name,Email")] Staff staff)
+        public async Task<IActionResult> Create([Bind("RoomID,StartTime,StaffID,StudentID")] Slot slot)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(staff);
+                _context.Add(slot);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(staff);
+            ViewData["StaffID"] = new SelectList(_context.Staff, "StaffID", "StaffID", slot.StaffID);
+            ViewData["StudentID"] = new SelectList(_context.Student, "StudentID", "StudentID", slot.StudentID);
+            return View(slot);
         }
 
-        // GET: Staffs/Edit/5
+        // GET: Slots/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -72,22 +79,24 @@ namespace AsrSystem.Controllers
                 return NotFound();
             }
 
-            var staff = await _context.Staff.FindAsync(id);
-            if (staff == null)
+            var slot = await _context.Slot.FindAsync(id);
+            if (slot == null)
             {
                 return NotFound();
             }
-            return View(staff);
+            ViewData["StaffID"] = new SelectList(_context.Staff, "StaffID", "StaffID", slot.StaffID);
+            ViewData["StudentID"] = new SelectList(_context.Student, "StudentID", "StudentID", slot.StudentID);
+            return View(slot);
         }
 
-        // POST: Staffs/Edit/5
+        // POST: Slots/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StaffID,Name,Email")] Staff staff)
+        public async Task<IActionResult> Edit(string id, [Bind("RoomID,StartTime,StaffID,StudentID")] Slot slot)
         {
-            if (id != staff.StaffID)
+            if (id != slot.RoomID)
             {
                 return NotFound();
             }
@@ -96,12 +105,12 @@ namespace AsrSystem.Controllers
             {
                 try
                 {
-                    _context.Update(staff);
+                    _context.Update(slot);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StaffExists(staff.StaffID))
+                    if (!SlotExists(slot.RoomID))
                     {
                         return NotFound();
                     }
@@ -112,10 +121,12 @@ namespace AsrSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(staff);
+            ViewData["StaffID"] = new SelectList(_context.Staff, "StaffID", "StaffID", slot.StaffID);
+            ViewData["StudentID"] = new SelectList(_context.Student, "StudentID", "StudentID", slot.StudentID);
+            return View(slot);
         }
 
-        // GET: Staffs/Delete/5
+        // GET: Slots/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -123,30 +134,32 @@ namespace AsrSystem.Controllers
                 return NotFound();
             }
 
-            var staff = await _context.Staff
-                .FirstOrDefaultAsync(m => m.StaffID == id);
-            if (staff == null)
+            var slot = await _context.Slot
+                .Include(s => s.Staff)
+                .Include(s => s.Student)
+                .FirstOrDefaultAsync(m => m.RoomID == id);
+            if (slot == null)
             {
                 return NotFound();
             }
 
-            return View(staff);
+            return View(slot);
         }
 
-        // POST: Staffs/Delete/5
+        // POST: Slots/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var staff = await _context.Staff.FindAsync(id);
-            _context.Staff.Remove(staff);
+            var slot = await _context.Slot.FindAsync(id);
+            _context.Slot.Remove(slot);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StaffExists(string id)
+        private bool SlotExists(string id)
         {
-            return _context.Staff.Any(e => e.StaffID == id);
+            return _context.Slot.Any(e => e.RoomID == id);
         }
     }
 }

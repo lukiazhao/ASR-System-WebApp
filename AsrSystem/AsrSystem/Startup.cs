@@ -35,17 +35,24 @@ namespace AsrSystem
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<AsrSystemContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<User>(options =>
+            {
+                options.Password.RequiredLength = 3;
+                options.Password.RequireDigit = options.Password.RequireNonAlphanumeric 
+                = options.Password.RequireUppercase = options.Password.RequireLowercase = false;
+                 
+            }).AddEntityFrameworkStores<AsrSystemContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<AsrSystemContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,7 +79,7 @@ namespace AsrSystem
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Slots}/{action=Index}/{id?}");
             });
         }
     }
