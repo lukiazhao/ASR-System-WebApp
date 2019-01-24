@@ -26,8 +26,9 @@ namespace AsrSystem.Data
             }
 
             var userManager = serviceProvider.GetService<UserManager<ApplicationUser>>();
-            await CreateUserAndEnsureUserHasRole(userManager, "s1234567@example.com", Constants.StudentRole);
-            await CreateUserAndEnsureUserHasRole(userManager, "e12345@example.com", Constants.StaffRole);
+            await CreateUserAndEnsureUserHasRole(userManager, "s1234567@student.rmit.edu.au", Constants.StudentRole);
+            await CreateUserAndEnsureUserHasRole(userManager, "e56789@rmit.edu.au", Constants.StaffRole);
+            await CreateUserAndEnsureUserHasRole(userManager, "e12345@rmit.edu.au", Constants.StaffRole);
             //await EnsureUserHasRole(userManager, "matthew.bolger@rmit.edu.au", Constants.StaffRole);
 
             var context = new ApplicationDbContext(serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>());
@@ -41,30 +42,67 @@ namespace AsrSystem.Data
             //    StudentID = "s123",
             //    Name = "Naaaaame"
             //});
+            
+            // Seed rooms
+            if (!await context.Room.AnyAsync())
+            {
+                await context.Room.AddRangeAsync(
+                new Room { RoomID = "A" },
+                new Room { RoomID = "B" },
+                new Room { RoomID = "C" },
+                new Room { RoomID = "D" }
+                );
+            }
 
-            if (await context.Staff.FindAsync("e12345") == null)
+            //Seed Staff
+            if (!await context.Staff.AnyAsync())
             {
                 await context.Staff.AddAsync(new Staff
                 {
                     StaffID = "e12345",
                     Name = "Johnny",
-                    Email = "e12345@staff.rmit.edu.au"
+                    Email = "e12345@rmit.edu.au"
+                });
+                await context.Staff.AddAsync(new Staff
+                {
+                    StaffID = "e56789",
+                    Name = "Mathew",
+                    Email = "e56789@rmit.edu.au"
                 });
             }
 
-            if (await context.Student.FindAsync("s1234567") == null)
+            //Seed Student
+            if (!await context.Student.AnyAsync())
             {
                 await context.Student.AddAsync(new Student
                 {
                     StudentID = "s1234567",
-                    Name = "Lukia"
+                    Name = "Lukia",
+                    Email = "s1234567@student.rmit.edu.au"
+                });
+            }
+            
+            //Seed Slot
+            if (!await context.Slot.AnyAsync())
+            {
+                await context.Slot.AddAsync(new Slot
+                {
+                    RoomID = "A",
+                    StartTime = new DateTime(2019, 1, 30, 9, 00, 00),
+                    StaffID = "e12345"
+                });
+                await context.Slot.AddAsync(new Slot
+                {
+                    RoomID = "B",
+                    StartTime = new DateTime(2019, 1, 30, 10, 00, 00),
+                    StaffID = "e12345"
                 });
             }
 
             context.SaveChanges();
-            //await UpdateUserAsync(userManager, "student@example.com", "s123");
-            //await UpdateUserAsync(userManager, "e12345@example.com", "e12345");
-            //await UpdateUserAsync(userManager, "s1234567@example.com", "s1234567");
+            await UpdateUserAsync(userManager, "e12345@rmit.edu.au", "e12345");
+            await UpdateUserAsync(userManager, "e56789@rmit.edu.au", "e56789");
+            await UpdateUserAsync(userManager, "s1234567@student.rmit.edu.au", "s1234567");
 
         }
 
