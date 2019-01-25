@@ -11,8 +11,10 @@ namespace AsrSystem.Controllers
     [Authorize(Roles = Constants.StaffRole)]
     public class StaffController : Controller
     {
+
         public IActionResult Index()
         {
+
             return View();
         }
     }

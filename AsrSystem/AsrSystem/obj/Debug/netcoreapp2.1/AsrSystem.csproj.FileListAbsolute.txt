@@ -70,3 +70,7 @@ D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Home
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Home\RoomTable.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Home\SlotTable.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Register.g.cshtml.cs
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\_ViewImports.g.cshtml.cs
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
