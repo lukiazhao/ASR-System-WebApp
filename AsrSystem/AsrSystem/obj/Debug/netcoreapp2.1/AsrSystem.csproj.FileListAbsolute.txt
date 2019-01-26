@@ -81,4 +81,3 @@ D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Staf
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Staff\CreateSlot.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Staff\StaffList.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Staff\DeleteSlot.g.cshtml.cs
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Staff\Test.g.cshtml.cs
