@@ -77,7 +77,7 @@ Write(ViewData["Title"]);
             WriteLiteral("</h2>\r\n<h2>Slot list</h2>\r\n\r\n");
             EndContext();
             BeginContext(212, 174, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97d5e31e2282422786434f50005c1bb6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c809008461d14577a5df29fef6785459", async() => {
                 BeginContext(237, 142, true);
                 WriteLiteral("\r\n    <p>\r\n        Staff ID: <input type=\"text\" name=\"StaffSearchString\">\r\n        <input type=\"submit\" value=\"Filter by staff\" />\r\n    </p>\r\n");
                 EndContext();
@@ -200,7 +200,7 @@ Write(ViewData["Title"]);
             WriteLiteral("            ");
             EndContext();
             BeginContext(1366, 112, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "35654a18678a4925981b0fda46d2828c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "570589463600407f925f9bd243ada03b", async() => {
                 BeginContext(1463, 11, true);
                 WriteLiteral("Cancel Book");
                 EndContext();
@@ -255,7 +255,7 @@ Write(ViewData["Title"]);
             WriteLiteral("            ");
             EndContext();
             BeginContext(1554, 99, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0098ea52d51b482e826bd65f3f791e72", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b173f9db6ac408db92edf7bd83cf66c", async() => {
                 BeginContext(1645, 4, true);
                 WriteLiteral("Book");
                 EndContext();

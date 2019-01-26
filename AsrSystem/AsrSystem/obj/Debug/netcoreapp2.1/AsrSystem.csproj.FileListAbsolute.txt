@@ -115,3 +115,4 @@ D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Areas/Iden
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/AsrSystem.dll
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/AsrSystem.pdb
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/AsrSystem.csproj.CopyComplete
+/Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/AsrSystem.csprojAssemblyReference.cache

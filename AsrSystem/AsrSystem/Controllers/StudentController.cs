@@ -19,27 +19,21 @@ namespace AsrSystem.Controllers
         public StudentController(ApplicationDbContext context)
         {
             _context = context;
-
-            //_currentStudent = _context.Student.SingleOrDefault(
-            //x => x.StudentID == User.Identity.Name.Substring(0, 8));
-            //_currentStudent = _context.Student.
         }
 
         // GET: Movies
         public async Task<IActionResult> Index(string staffSearchString)
         {
-            //var slots = _context.Slot;
             if(!String.IsNullOrEmpty(staffSearchString))
             {
-                //slots = slots.Where(x => x.StudentID == null && x.StaffID == staffSearchString).Select(x => x);
-                return View(await _context.Slot.Where(x => x.StudentID == null && x.StaffID == staffSearchString).ToListAsync());
+                return View(await _context.Slot.Where(x => x.StudentID == null 
+                && x.StaffID == staffSearchString && x.StartTime >= DateTime.Now).ToListAsync());
             }
             else
             {
-                //slots = slots.Where(x => x.StudentID == null && x.StaffID == staffSearchString).ToList();
-                return View(await _context.Slot.Where(x => x.StudentID == null || x.StudentID == CurrentStudent().StudentID).ToListAsync());
+                return View(await _context.Slot.Where(x => (x.StudentID == null 
+                || x.StudentID == CurrentStudent().StudentID) && x.StartTime >= DateTime.Now).ToListAsync());
             }
-            //return View(await slots.ToListAs);
         }
 
         //just for testing
@@ -47,7 +41,6 @@ namespace AsrSystem.Controllers
         {
             var tartgetSlot = await _context.Slot.FirstOrDefaultAsync(slot => slot.RoomID == roomid
                         && slot.StartTime == starttime);
-            //tartgetSlot.StudentID = CurrentStudent().StudentID;
             tartgetSlot.Book(CurrentStudent().StudentID);
             _context.Update(tartgetSlot);
             await _context.SaveChangesAsync();
@@ -61,7 +54,6 @@ namespace AsrSystem.Controllers
         {
             var tartgetSlot = _context.Slot.FirstOrDefault(slot => slot.RoomID == roomid
             && slot.StartTime == starttime);
-            //tartgetSlot.StudentID = null;
             tartgetSlot.CancelBook();
             _context.Update(tartgetSlot);
             await _context.SaveChangesAsync();
