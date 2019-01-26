@@ -41,6 +41,7 @@ namespace AsrSystem.Controllers
         {
             var tartgetSlot = await _context.Slot.FirstOrDefaultAsync(slot => slot.RoomID == roomid
                         && slot.StartTime == starttime);
+            ValidateStudentDailyBookingLimit(starttime);
             tartgetSlot.Book(CurrentStudent().StudentID);
             _context.Update(tartgetSlot);
             await _context.SaveChangesAsync();
@@ -70,6 +71,15 @@ namespace AsrSystem.Controllers
         {
             return _context.Student.SingleOrDefault(
             x => x.StudentID == User.Identity.Name.Substring(0, 8));
+        }
+
+        private void ValidateStudentDailyBookingLimit(DateTime startTime)
+        {
+            if(_context.Slot.Any(x => x.StudentID == CurrentStudent().StudentID 
+            && x.StartTime.Day == startTime.Day))
+            {
+                throw new Exception();
+            }
         }
     }
 }
