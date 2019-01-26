@@ -75,7 +75,7 @@ namespace AsrSystem
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Staff}/{action=Index}/{id?}");
             });
         }
     }

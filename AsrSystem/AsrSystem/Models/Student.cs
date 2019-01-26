@@ -17,5 +17,7 @@ namespace AsrSystem.Models
 
         [Required]
         public string Email { get; set; }
+
+        public virtual ICollection<Slot> Slots { get; set; }
     }
 }

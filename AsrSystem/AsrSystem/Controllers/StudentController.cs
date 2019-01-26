@@ -14,7 +14,7 @@ namespace AsrSystem.Controllers
     {
         public IActionResult Index()
         {
-            var user = this.User.FindFirstValue(ClaimTypes.Name);
+            var user = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewData["Message"] = user;
             return View();
         }

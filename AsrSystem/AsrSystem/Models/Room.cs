@@ -11,5 +11,7 @@ namespace AsrSystem.Models
     {
         [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string RoomID { get; set; }
+
+        public virtual ICollection<Slot> Slots { get; set; }
     }
 }
