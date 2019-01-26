@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Slot>
+
+<h2>Your Created Slots</h2>
+<h3>data = @ViewData["Message"]</h3>
+<p>
+    <a asp-action="CreateSlot">Create New Slot</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(x => x.Room)
+            </th>
+            <th>
+                @Html.DisplayNameFor(x => x.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(x => x.Staff)
+            </th>
+            <th>
+                @Html.DisplayNameFor(x => x.Student)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(x => item.Room.RoomID)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item.StartTime)
+                </td>
+
+                <td>
+                    <p>@Html.DisplayFor(x => item.Staff.StaffID)</p>
+                    <p>@Html.DisplayFor(x => item.Staff.Name)</p>
+                    <p>@Html.DisplayFor(x => item.Staff.Email)</p>
+                </td>
+                <td>
+                    <p>@Html.DisplayFor(x => item.Student.StudentID)</p>
+                    <p>@Html.DisplayFor(x => item.Student.Name)</p>
+                    <p>@Html.DisplayFor(x => item.Student.Email)</p>
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteSlot", new { roomID = item.RoomID, startTime= item.StartTime })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Room>
+@{
+    ViewData["Title"] = "Rooms";
+}
+
+<h2>Rooms</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(x => x.RoomID)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(x => item.RoomID)</td>
+        </tr>
+            }
+    </tbody>
+</table>
