@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{A5DCB987-D0A4-4428-AF16-8A12D27D97DD}|Default">
+  <MonoDevelop.Ide.ItemProperties.AsrSystem PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AsrSystem/Controllers/StudentController.cs">
+    <Files>
+      <File FileName="AsrSystem/Areas/Identity/Pages/_ViewStart.cshtml" Line="4" Column="1" />
+      <File FileName="AsrSystem/Controllers/StudentController.cs" Line="50" Column="66" />
+      <File FileName="AsrSystem/Views/Student/Index.cshtml" Line="51" Column="38" />
+      <File FileName="AsrSystem/Views/Student/CancelBook.cshtml" Line="13" Column="5" />
+      <File FileName="AsrSystem/Program.cs" Line="1" Column="1" />
+      <File FileName="AsrSystem/Models/Student.cs" Line="18" Column="19" />
+      <File FileName="AsrSystem/Views/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="AsrSystem/Models/Slot.cs" Line="34" Column="14" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
