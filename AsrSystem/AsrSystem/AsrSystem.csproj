@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20190126041631_AddSlotCollection.cs" />
+    <Compile Remove="Data\Migrations\20190126041631_AddSlotCollection.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190126112923_AddEndTime.cs" />
+    <Compile Remove="Data\Migrations\20190126112923_AddEndTime.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190126113159_AddTime.cs" />
+    <Compile Remove="Data\Migrations\20190126113159_AddTime.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190126143249_AddVlidatiion.cs" />
+    <Compile Remove="Data\Migrations\20190126143249_AddVlidatiion.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.1.4" />
@@ -14,6 +25,21 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Staff\FAQ.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Staff\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Staff\RoomTable.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Staff\SlotTable.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>

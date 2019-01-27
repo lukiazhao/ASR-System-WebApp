@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:/WDT/ASR-System/AsrSystem/AsrSystem/bin/Debug/netcoreapp2.1/AsrSystem.deps.json
 D:/WDT/ASR-System/AsrSystem/AsrSystem/bin/Debug/netcoreapp2.1/AsrSystem.runtimeconfig.json
 D:/WDT/ASR-System/AsrSystem/AsrSystem/bin/Debug/netcoreapp2.1/AsrSystem.runtimeconfig.dev.json
@@ -74,6 +75,15 @@ D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Areas/Iden
 D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Areas/Identity/Pages/Account/_ViewImports.g.cshtml.cs
 D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Areas/Identity/Pages/_ValidationScriptsPartial.g.cshtml.cs
 D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Areas/Identity/Pages/_ViewImports.g.cshtml.cs
+=======
+D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/FAQ.g.cshtml.cs
+D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/Index.g.cshtml.cs
+D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/RoomTable.g.cshtml.cs
+D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/SlotTable.g.cshtml.cs
+D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/CreateSlot.g.cshtml.cs
+D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/StaffList.g.cshtml.cs
+D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/DeleteSlot.g.cshtml.cs
+>>>>>>> ece0990ab01898f462179f1bacded9d57cb87b61
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/bin/Debug/netcoreapp2.1/AsrSystem.deps.json
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/bin/Debug/netcoreapp2.1/AsrSystem.runtimeconfig.json
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/bin/Debug/netcoreapp2.1/AsrSystem.runtimeconfig.dev.json
@@ -104,6 +114,13 @@ D:/WDT/AsrSystemApp/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Areas/Iden
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.g.cshtml.cs
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_LoginPartial.g.cshtml.cs
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs
+/Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/CreateSlot.g.cshtml.cs
+/Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/DeleteSlot.g.cshtml.cs
+/Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/FAQ.g.cshtml.cs
+/Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/Index.g.cshtml.cs
+/Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/RoomTable.g.cshtml.cs
+/Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/SlotTable.g.cshtml.cs
+/Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Staff/StaffList.g.cshtml.cs
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Student/Book.g.cshtml.cs
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Student/CancelBook.g.cshtml.cs
 /Users/zhongnianlu/C#Projects/AsrSystem/AsrSystem/AsrSystem/obj/Debug/netcoreapp2.1/Razor/Views/Student/Index.g.cshtml.cs
