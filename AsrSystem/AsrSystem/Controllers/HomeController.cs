@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using AsrSystem.Models;
 using AsrSystem.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace AsrSystem.Controllers
 {
@@ -17,7 +18,16 @@ namespace AsrSystem.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (User != null)
+            {
+                var currentUser = _context.Users.FirstOrDefault(x => x.NormalizedUserName == User.Identity.Name);
+
+                return View(currentUser);
+            }
+            else
+            {
+                return View(); 
+            }
         }
 
         public async Task<IActionResult> SlotTable()
@@ -36,7 +46,6 @@ namespace AsrSystem.Controllers
         {
             return View(await _context.Room.ToListAsync());
         }
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

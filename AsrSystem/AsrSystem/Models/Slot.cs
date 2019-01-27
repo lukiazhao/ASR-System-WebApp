@@ -27,5 +27,29 @@ namespace AsrSystem.Models
 
         public string StudentID { get; set; }
         public virtual Student Student { get; set; }
+
+        public void Book(string studentID) 
+        {
+            if(StudentID != null)
+            {
+                throw new Exception(); 
+            }
+            else
+            {
+                StudentID = studentID; 
+            }
+        }
+
+        public void CancelBook()
+        {
+            if (StudentID != null)
+            {
+                StudentID = null;
+             }
+            else
+            {
+                throw new Exception();
+            }
+        }
     }
 }
