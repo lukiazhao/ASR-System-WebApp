@@ -32,7 +32,7 @@ namespace AsrSystem.Controllers
         public async Task<IActionResult> SlotTable()
         {
             // filter this staff's created slots
-            var staffID = this.User.Identity.Name.Substring(0, 6);   
+            var staffID = this.User.Identity.Name.Substring(0, User.Identity.Name.IndexOf('@'));   
             List<Slot> slots = await _context.Slot.Where(x => x.StaffID == staffID).ToListAsync();
             ViewData["Message"] = staffID;
             return View(slots);
