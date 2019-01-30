@@ -1,9 +1,62 @@
-﻿
+﻿@model IEnumerable<AsrSystem.Models.Slot>
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Student Menu";
 }
 
-<h2>Index</h2>
+<h2>@ViewData["Title"]</h2>
+<h2>Slot list</h2>
 
-<h3>@ViewData["Message"]</h3>
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<form asp-action="Index">
+    <p>
+        Staff ID: <input type="text" name="StaffSearchString">
+        <input type="submit" value="Filter by staff" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentID)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffID)
+            </td>
+            <td>
+                @if (item.StudentID != null) {
+            @Html.DisplayFor(modelItem => item.StudentID);
+            <a asp-action="CancelBook" asp-route-roomid="@item.RoomID" asp-route-starttime="@item.StartTime">Cancel Book</a>
 
+                }
+                else
+                {
+            <a asp-action="Book" asp-route-roomid="@item.RoomID" asp-route-starttime="@item.StartTime">Book</a>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

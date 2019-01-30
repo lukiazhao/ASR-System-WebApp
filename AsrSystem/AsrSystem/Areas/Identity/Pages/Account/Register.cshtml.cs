@@ -89,7 +89,7 @@ namespace AsrSystem.Areas.Identity.Pages.Account
                     if (await _context.Student.FindAsync(id) == null)
                         await _context.Student.AddAsync(new Student { StudentID = id, Email = Input.Email, Name = Input.Name });
                     user.StudentID = id;
-                }
+                } 
                 else
                     throw new Exception();
                 await _context.SaveChangesAsync();
