@@ -89,7 +89,7 @@ namespace AsrSystem
             }
 
             app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             //app.UseStatusCodePages(async context =>
             //{
@@ -101,7 +101,7 @@ namespace AsrSystem
             //});   // call before request handling middlewares
 
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
 
 
             app.UseAuthentication();
