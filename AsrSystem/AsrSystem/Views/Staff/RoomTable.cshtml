@@ -4,7 +4,12 @@
 }
 
 <h2>Rooms</h2>
-
+<form asp-controller="Staff" asp-action="RoomTable" method="get">
+    <p>
+        Check Room Availability on Date: <input type="date" name="SearchRoomByDate">
+        <input type="submit" value="Check" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
