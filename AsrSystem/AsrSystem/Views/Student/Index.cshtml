@@ -1,62 +1,101 @@
-﻿@model IEnumerable<AsrSystem.Models.Slot>
+﻿@model StudentSlotTableViewModel
 
 @{
-    ViewData["Title"] = "Student Menu";
+    ViewData["Title"] = "Slot List";
 }
 
 <h2>@ViewData["Title"]</h2>
-<h2>Slot list</h2>
+<h2>Manage Your Booking</h2>
+<br />
 
-@*<p>
-        <a asp-action="Create">Create New</a>
-    </p>*@
 <form asp-action="Index">
     <p>
-        Staff ID: <input type="text" name="StaffSearchString">
-        <input type="submit" value="Filter by staff" />
+        Search Available Slots by Staff: <input type="text" name="StaffSearchString">
+        <input type="submit" value="Go" />
     </p>
 </form>
+
+<br />
+<br />
+
+<div class="form-group">
+    @Html.LabelFor(x => Model.SelectedStaffID, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-5">
+        @Html.DropDownListFor(x => Model.StaffIDNames, new SelectList(Model.StaffIDNames, "Text"),
+             htmlAttributes: new { @class = "form-control", id = "SelectedStaff" })
+    </div>
+</div>
+
+<a asp-action="Index" asp-route-StaffSearchString="@Model.SelectedStaffID">Search</a>
+
+<body>
+    @using (Html.BeginForm("Index", "Student", FormMethod.Post))
+    {
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td>Gender: </td>
+                <td>
+                    @Html.DropDownListFor(m => m.SelectedStaffID, new SelectList(Model.StaffIDNames, "Text"), "Please select")
+                </td>
+            </tr> 
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    }
+</body>
+
+<br />
+<br />
+
+
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RoomID)
+                @Html.DisplayNameFor(model => model.Slots.FirstOrDefault().RoomID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartTime)
+                @Html.DisplayNameFor(model => model.Slots.FirstOrDefault().StartTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StaffID)
+                @Html.DisplayNameFor(model => model.Slots.FirstOrDefault().StaffID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StudentID)
+                @Html.DisplayNameFor(model => model.Slots.FirstOrDefault().StudentID)
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoomID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StaffID)
-            </td>
-            <td>
-                @if (item.StudentID != null) {
-            @Html.DisplayFor(modelItem => item.StudentID);
-            <a asp-action="CancelBook" asp-route-roomid="@item.RoomID" asp-route-starttime="@item.StartTime">Cancel Book</a>
-
-                }
-                else
-                {
-            <a asp-action="Book" asp-route-roomid="@item.RoomID" asp-route-starttime="@item.StartTime">Book</a>
-                }
-            </td>
-        </tr>
+        @foreach (var item in Model.Slots)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffID)
+                </td>
+                <td>
+                    @if (item.StudentID != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.StudentID);
+                        <a asp-action="CancelBook" asp-route-roomid="@item.RoomID" asp-route-starttime="@item.StartTime">Cancel Book</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Book" asp-route-roomid="@item.RoomID" asp-route-starttime="@item.StartTime">Book</a>
+                    }
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+<br />
+<br />
+
