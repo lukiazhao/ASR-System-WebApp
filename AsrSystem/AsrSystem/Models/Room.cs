@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace AsrSystem.Models
     public class Room
     {
         [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DisplayName("Room ID")]
         public string RoomID { get; set; }
 
         public virtual ICollection<Slot> Slots { get; set; }

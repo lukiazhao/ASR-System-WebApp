@@ -13,6 +13,8 @@ using AsrSystem.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AsrSystem.Models;
+using Microsoft.AspNetCore.Rewrite;
+using Castle.Core.Logging;
 
 namespace AsrSystem
 {
@@ -23,11 +25,26 @@ namespace AsrSystem
             Configuration = configuration;
         }
 
+        //public Startup(IHostingEnvironment env)
+        //{
+        //    var builder = new ConfigurationBuilder()
+        //        .SetBasePath(env.ContentRootPath)
+        //        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+        //        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+        //        .AddEnvironmentVariables();
+        //    Configuration = builder.Build();
+        //}
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add(new RequireHttpsAttribute());
+            });
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -48,6 +65,12 @@ namespace AsrSystem
                     options.Password.RequireUppercase = options.Password.RequireLowercase = false;
             }).AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -61,13 +84,25 @@ namespace AsrSystem
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+                app.UseExceptionHandler("Home/Error");
+                //app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
+            //app.UseHttpsRedirection();
+
+            //app.UseStatusCodePages(async context =>
+            //{
+            //    context.HttpContext.Response.ContentType = "text/plain";
+
+            //    await context.HttpContext.Response.WriteAsync(
+            //        "Status code page, status code: " +
+            //        context.HttpContext.Response.StatusCode);
+            //});   // call before request handling middlewares
+
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
+
 
             app.UseAuthentication();
 
