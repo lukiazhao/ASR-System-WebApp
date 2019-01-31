@@ -108,6 +108,15 @@ namespace AsrSystem.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostConfirmationAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
+            // Get the information about the user from the external login provider
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+
+            if (info == null)
+            {
+                ErrorMessage = "Error loading external login information during confirmation.";
+                return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
+            }
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
@@ -123,6 +132,15 @@ namespace AsrSystem.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    result = await _userManager.AddLoginAsync(user, info);
+
+                    //if (result.Succeeded)
+                    //{
+                    //    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //    _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
+                    //    return LocalRedirect(returnUrl);
+                    //}
+
                     await _userManager.AddToRoleAsync(user, Constants.StaffRole);
 
                     _logger.LogInformation("User created a new account with password.");
@@ -137,6 +155,8 @@ namespace AsrSystem.Areas.Identity.Pages.Account
                 }
             }
 
+            LoginProvider = info.LoginProvider;
+            ReturnUrl = returnUrl;
             // If we got this far, something failed, redisplay form
             return Page();
         }
