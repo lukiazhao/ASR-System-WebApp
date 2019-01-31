@@ -18,6 +18,21 @@ export class SlotService {
       .catch(this.errorHandler);
   }
 
+   updateSlot(slot) {
+    return this._http.put(this.myAppUrl + "api/Admin/EditSlot", slot).map((response: Response) => response.json())
+      .catch(this.errorHandler);
+  }
+
+  saveSlot(slot) {
+    
+     return this._http.post(this.myAppUrl + "api/Admin/CreateSlot", slot).map((response: Response) => response.json())
+        .catch(this.errorHandler);
+  }
+
+  deleteSlot(slot) {
+    return this._http.delete(this.myAppUrl + "api/Admin/DeleteSlot/", slot).map((response: Response) => response.json())
+      .catch(this.errorHandler);
+  }
 
 
   //getEmployees() {

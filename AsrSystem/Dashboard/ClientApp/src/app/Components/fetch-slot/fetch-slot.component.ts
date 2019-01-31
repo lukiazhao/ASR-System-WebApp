@@ -21,6 +21,19 @@ export class FetchSlotComponent {
     this._slotService.getSlotList().subscribe(data => this.slotList = data);
   }
 
+  delete(roomId, startTime)
+  {
+    const ans = confirm("Do you want to delete customer with Id: " + roomId + "  " + startTime);
+    if(ans)
+    {
+      this._slotService.deleteSlot(new Slot(roomId, startTime)).subscribe((data) =>
+        {
+          this.getSlots();
+        },
+        error => console.error(error));
+    }
+  }
+
 
   //delete(employeeID)
   //{
@@ -42,3 +55,14 @@ interface SlotData {
   staffId: string;
   studentId: string;
 }
+
+class Slot {
+  roomId: string;
+  startTime: string;
+  staffId: string;
+  studentId: string;
+
+  constructor(roomId: string, startTime: string) {
+    this.roomId = roomId;
+    this.startTime = startTime;
+  }}

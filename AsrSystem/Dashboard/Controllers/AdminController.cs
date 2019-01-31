@@ -20,6 +20,33 @@ namespace Dashboard.Controllers
             return slotDataAccessLayer.GetAllSlots(); //.Select(x => new { x.RoomId, x.StartTime, x.StaffId, x.StudentId });
         }
 
+        [HttpPost]
+        [Route("CreateSlot")]
+        public int CreateSlot([FromBody] Slot slot)
+        {
+            return slotDataAccessLayer.AddSlot(slot);
+        }
+
+        [HttpPut]
+        [Route("EditSlot")]
+        public int EditSlot([FromBody] Slot slot)
+        {
+            return slotDataAccessLayer.UpdateSlot(slot);
+        }
+
+        [HttpDelete]
+        [Route("DeleteSlot")]
+        public int DeleteSlot([FromBody] Slot slot)
+        {
+            return slotDataAccessLayer.DeleteSlot(slot);
+        }
+
+
+        /// <summary>
+        ///////////////////// ROOM ////////////////////////////////////////////////////
+        /// </summary>
+        /// <returns></returns>
+
         [HttpGet]
         [Route("GetRooms")]
         public IEnumerable<Room> GetRooms()

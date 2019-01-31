@@ -21,12 +21,13 @@ export class AddRoomComponent {
       this.roomId = this._avRoute.snapshot.params["id"];
     }
     this.roomForm = this._fb.group({
-      roomId: 0,
-      roomName: ["", [Validators.required]],
+      //roomId: 0,
+      roomId: ["", [Validators.required]],
     });
   }
   
   save() {
+    console.log("save()");
     if (!this.roomForm.valid) {
       return;
     }
