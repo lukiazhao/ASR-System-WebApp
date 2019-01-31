@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsrSystem", "AsrSystem\AsrSystem.csproj", "{A5DCB987-D0A4-4428-AF16-8A12D27D97DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsrSystem", "AsrSystem\AsrSystem.csproj", "{A5DCB987-D0A4-4428-AF16-8A12D27D97DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dashboard", "Dashboard\Dashboard.csproj", "{F84DC7DE-10AC-40F3-B386-0253DD6BC9A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A5DCB987-D0A4-4428-AF16-8A12D27D97DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5DCB987-D0A4-4428-AF16-8A12D27D97DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5DCB987-D0A4-4428-AF16-8A12D27D97DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84DC7DE-10AC-40F3-B386-0253DD6BC9A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84DC7DE-10AC-40F3-B386-0253DD6BC9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84DC7DE-10AC-40F3-B386-0253DD6BC9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84DC7DE-10AC-40F3-B386-0253DD6BC9A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
