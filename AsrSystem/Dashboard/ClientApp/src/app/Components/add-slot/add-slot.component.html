@@ -1,0 +1,37 @@
+<h1>{{title}}</h1>
+<h3>Slot</h3>
+<hr />
+<form [formGroup]="slotForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Room ID</label>
+    <div class="col-md-4"> <input class="form-control" type="text" formControlName="roomId"> </div>
+    <!--<span class="text-danger" *ngIf="roomId.invalid && formDir.submitted">
+      Room ID is required.
+    </span>-->
+  </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Start Time</label>
+    <div class="col-md-4"> <input class="form-control" type="datetime" formControlName="startTime"> </div>
+    <!--<span class="text-danger" *ngIf="startTime.invalid && formDir.submitted">
+      Start Time is required.
+    </span>-->
+  </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Staff ID</label>
+    <div class="col-md-4"> <input class="form-control" type="text" formControlName="staffId"> </div>
+    <!--<span class="text-danger" *ngIf="staffId.invalid && formDir.submitted">
+      Staff ID is required.
+    </span>-->
+  </div>
+
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Student ID</label>
+    <div class="col-md-4"> <input class="form-control" type="text" formControlName="studentId"> </div>
+    <!--<span class="text-danger" *ngIf="studentId.invalid && formDir.submitted">
+    </span>-->
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">Save</button>
+    <button class="btn" (click)="cancel()">Cancel</button>
+  </div>
+</form>

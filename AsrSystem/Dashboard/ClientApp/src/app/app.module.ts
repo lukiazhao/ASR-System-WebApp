@@ -18,6 +18,7 @@ import { FetchEmployeeComponent } from "./components/fetch-employee/fetch-employ
 
 import { SlotService } from "./services/slot.service";
 import { FetchSlotComponent } from "./components/fetch-slot/fetch-slot.component";
+import { AddSlotComponent } from "./components/add-slot/add-slot.component";
 
 import { RoomService } from "./services/room.service";
 import { FetchRoomComponent } from "./components/fetch-room/fetch-room.component";
@@ -33,6 +34,7 @@ import { AddRoomComponent } from "./components/add-room/add-room.component";
     AddEmployeeComponent,
     FetchEmployeeComponent,
     FetchSlotComponent,
+    AddSlotComponent,
     FetchRoomComponent,
     AddRoomComponent
   ],
@@ -51,6 +53,7 @@ import { AddRoomComponent } from "./components/add-room/add-room.component";
       { path: "add-employee", component: AddEmployeeComponent },
       { path: "employee/edit/:id", component: AddEmployeeComponent },
       { path: "fetch-slot", component: FetchSlotComponent },
+      { path: "add-slot", component: AddSlotComponent },
       { path: "fetch-room", component: FetchRoomComponent },
       { path: "add-room", component: AddRoomComponent }
     ])
