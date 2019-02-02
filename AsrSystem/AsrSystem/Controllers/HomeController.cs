@@ -11,11 +11,16 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AsrSystem.Controllers
 {
+    /// <summary>
+    /// Home page controller of web app.
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
+
         public HomeController(ApplicationDbContext context) => _context = context;
 
+        //Show login user name on home page
         public IActionResult Index()
         {
             if (User != null)
@@ -29,12 +34,7 @@ namespace AsrSystem.Controllers
                 return View(); 
             }
         }
-
-        public async Task<IActionResult> SlotTable()
-        {
-            return View(await _context.Slot.ToListAsync());
-        }
-
+       
         public IActionResult FAQ()
         {
             ViewData["Message"] = "Your contact page.";
@@ -42,17 +42,33 @@ namespace AsrSystem.Controllers
             return View();
         }
 
-        public async Task<IActionResult> RoomTable()
+        /// <summary>
+        /// Rooms the table. Filter all room available to create new slot by a given day
+        /// </summary>
+        /// <returns>The table.</returns>
+        /// <param name="SearchRoomByDate">Search room by date.</param>
+        public async Task<IActionResult> RoomTable(DateTime SearchRoomByDate)
         {
-            return View(await _context.Room.ToListAsync());
+            if (SearchRoomByDate != null)
+            {
+                var rooms = await _context.Room.Where(x => x.Slots.Count(slot => slot.StartTime.Day == SearchRoomByDate.Day) < 2).ToListAsync();
+
+                return View(rooms);
+            }
+            else
+            {
+                return View(await _context.Room.ToListAsync());
+            }
         }
 
+        // Error handle page
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        // Register success page
         public IActionResult RegisterSuccess()
         {
             return View();

@@ -5,6 +5,9 @@ using System.ComponentModel;
 
 namespace AsrSystem.Models
 {
+    /// <summary>
+    /// Student slot table view model. For Student Index page to select staff in list.
+    /// </summary>
     public class StudentSlotTableViewModel
     {
         public IEnumerable<Slot> Slots { get; set; }

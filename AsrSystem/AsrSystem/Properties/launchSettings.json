@@ -11,7 +11,6 @@
     "IIS Express": {
         "commandName": "IISExpress",
         "launchBrowser": true,
-        "launchUrl": "https://localhost:44300/",
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"
         }
@@ -19,12 +18,10 @@
     "AsrSystem": {
         "commandName": "Project",
         "launchBrowser": true,
-        //"applicationUrl": "https://localhost:5001;http://localhost:5000",
+        "applicationUrl": "https://localhost:5001;http://localhost:5000",
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"
-        },
-        "applicationUrl": "http://localhost:62376"
-
+        }
     }
   }
 }

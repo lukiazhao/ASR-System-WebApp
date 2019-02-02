@@ -11,6 +11,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AsrSystem.Controllers
 {
+    /// <summary>
+    /// Student menu listener class generate view pages related to student features and 
+    /// pass Slot list to View part.
+    /// </summary>
     [Authorize(Roles = Constants.StudentRole)]
     public class StudentController : Controller
     {
@@ -21,7 +25,12 @@ namespace AsrSystem.Controllers
             _context = context;
         }
 
-        // GET: Movies
+        // GET: Slots 
+        /// <summary>
+        /// Index the specified staffSearchString. Filter list based on staff id
+        /// </summary>
+        /// <returns>The index.</returns>
+        /// <param name="staffSearchString">Staff search string.</param>
         public async Task<IActionResult> Index(string staffSearchString)
         {
             StudentSlotTableViewModel studentSlotTableViewModel = new StudentSlotTableViewModel
@@ -29,6 +38,7 @@ namespace AsrSystem.Controllers
                 StaffIDNames = await _context.Staff.Select(staff => (staff.StaffID + "    " + staff.Name)).ToListAsync()
             };
 
+            //only show available slots
             if (!String.IsNullOrEmpty(staffSearchString))
             {
                 studentSlotTableViewModel.Slots = await _context.Slot.Where(x => x.StudentID == null
@@ -43,7 +53,12 @@ namespace AsrSystem.Controllers
             return View(studentSlotTableViewModel);
         }
 
-        //just for testing
+        /// <summary>
+        /// Book the specified roomid and starttime slot.
+        /// </summary>
+        /// <returns>The book.</returns>
+        /// <param name="roomid">Roomid.</param>
+        /// <param name="starttime">Starttime.</param>
         [HandleException]
         public async Task<IActionResult> Book(string roomid, DateTime starttime)
         {
@@ -57,8 +72,14 @@ namespace AsrSystem.Controllers
             return View(tartgetSlot);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
+        /// <summary>
+        /// Cancels the book. Update database.
+        /// </summary>
+        /// <returns>The book.</returns>
+        /// <param name="roomid">Roomid.</param>
+        /// <param name="starttime">Starttime.</param>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CancelBook(string roomid, DateTime starttime)
         {
             var tartgetSlot = _context.Slot.FirstOrDefault(slot => slot.RoomID == roomid
@@ -70,17 +91,20 @@ namespace AsrSystem.Controllers
             return View(await _context.Slot.ToListAsync());
         }
 
+        // tool method 
         private bool SlotExist(string roomID, DateTime startTime)
         {
             return _context.Slot.Any(e => e.RoomID == roomID && e.StartTime == startTime);
         }
 
+        // tool method to get current user (student)
         private Student CurrentStudent()
         {
             return _context.Student.SingleOrDefault(
             x => x.StudentID == User.Identity.Name.Substring(0, 8));
         }
 
+        // validation for business rule: a student can only book one slot per day.
         private void ValidateStudentDailyBookingLimit(DateTime startTime)
         {
             if(_context.Slot.Any(x => x.StudentID == CurrentStudent().StudentID 
