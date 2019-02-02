@@ -70,7 +70,7 @@ using AsrSystem.Models;
             WriteLiteral("        <p>");
             EndContext();
             BeginContext(315, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c6d8ea91483d474dbe08dc11acad0682", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3746ed1b22fb4caa93f7a95283dba89d", async() => {
                 BeginContext(364, 5, true);
                 WriteLiteral("Login");
                 EndContext();

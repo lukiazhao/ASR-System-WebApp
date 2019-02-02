@@ -15,6 +15,16 @@ namespace Dashboard.Models
             return db.Slot.ToList();
         }
 
+        public Object GetSlotData(string key)
+        {
+            var keys = key.Split('_');
+            var roomId = keys[0];
+            var startTime = keys[1];
+            var slot = db.Slot.Where(x => x.RoomId == roomId && x.StartTime == Convert.ToDateTime(startTime))
+                .Select(x => new { x.RoomId, x.StartTime, x.StaffId, x.StudentId}).FirstOrDefault();
+            return slot;
+        }
+
         public int UpdateSlot(Slot slot)
         {
             db.Entry(slot).State = EntityState.Modified;
@@ -29,11 +39,13 @@ namespace Dashboard.Models
             return 1;
         }
 
-        public int DeleteSlot(Slot slot)
+        public int DeleteSlot(string key)
         {
             //var emp = db.Employee.Find(id);
-            db.Slot.Remove(db.Slot.Where(x => x.RoomId == slot.RoomId && x.StartTime == slot.StartTime).FirstOrDefault());
-            //db.Slot.Remove(slot)k
+            var keys = key.Split('_');
+            var roomId = keys[0];
+            var startTime = keys[1];
+            db.Slot.Remove(db.Slot.Where(x => x.RoomId == roomId && x.StartTime == Convert.ToDateTime(startTime)).FirstOrDefault());
             db.SaveChanges();
             return 1;
         }

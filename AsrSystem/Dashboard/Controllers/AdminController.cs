@@ -12,6 +12,7 @@ namespace Dashboard.Controllers
     {
         private readonly SlotDataAccessLayer slotDataAccessLayer= new SlotDataAccessLayer();
         private readonly RoomDataAccessLayer roomDataAccessLayer = new RoomDataAccessLayer();
+        private readonly UserDataAccessLayer userDataAccessLayer = new UserDataAccessLayer();
 
         [HttpGet]
         [Route("Index")]
@@ -24,24 +25,48 @@ namespace Dashboard.Controllers
         [Route("CreateSlot")]
         public int CreateSlot([FromBody] Slot slot)
         {
+            if (slot.StudentId == "")
+            {
+                slot.StudentId = null;
+            }
             return slotDataAccessLayer.AddSlot(slot);
+        }
+
+        [HttpGet]
+        [Route("Details/{key}")]
+        public Object Details(string key)
+        {
+            return slotDataAccessLayer.GetSlotData(key);
         }
 
         [HttpPut]
         [Route("EditSlot")]
         public int EditSlot([FromBody] Slot slot)
         {
+            if (slot.StudentId == "")
+            {
+                slot.StudentId = null;
+            }
             return slotDataAccessLayer.UpdateSlot(slot);
         }
 
         [HttpDelete]
-        [Route("DeleteSlot")]
-        public int DeleteSlot([FromBody] Slot slot)
+        [Route("DeleteSlot/{key}")]
+        public int DeleteSlot(string key)
         {
-            return slotDataAccessLayer.DeleteSlot(slot);
+            
+            return slotDataAccessLayer.DeleteSlot(key);
         }
-
-
+        /// <summary>
+        /// /////////////////////////// User//////////////////////
+        /// </summary>
+        [HttpGet]
+        [Route("GetStaff")]
+        public IEnumerable<Staff> GetStaff()
+        {
+            return userDataAccessLayer.GetAllStaff();
+        }
+        
         /// <summary>
         ///////////////////// ROOM ////////////////////////////////////////////////////
         /// </summary>

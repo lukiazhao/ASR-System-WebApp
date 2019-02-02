@@ -23,6 +23,7 @@ import { AddSlotComponent } from "./components/add-slot/add-slot.component";
 import { RoomService } from "./services/room.service";
 import { FetchRoomComponent } from "./components/fetch-room/fetch-room.component";
 import { AddRoomComponent } from "./components/add-room/add-room.component";
+import { SlotFilterPipe } from "./Components/fetch-slot/slot-filter.pipe";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddRoomComponent } from "./components/add-room/add-room.component";
     FetchSlotComponent,
     AddSlotComponent,
     FetchRoomComponent,
-    AddRoomComponent
+    AddRoomComponent,
+    SlotFilterPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
@@ -54,6 +56,7 @@ import { AddRoomComponent } from "./components/add-room/add-room.component";
       { path: "employee/edit/:id", component: AddEmployeeComponent },
       { path: "fetch-slot", component: FetchSlotComponent },
       { path: "add-slot", component: AddSlotComponent },
+      { path: "slot/edit/:id1/:id2", component: AddSlotComponent },
       { path: "fetch-room", component: FetchRoomComponent },
       { path: "add-room", component: AddRoomComponent }
     ])
