@@ -56,8 +56,6 @@ namespace AsrSystem
                 options.UseLazyLoadingProxies().UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddDefaultIdentity<IdentityUser>()
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 3;
@@ -85,11 +83,11 @@ namespace AsrSystem
             else
             {
                 app.UseExceptionHandler("Home/Error");
-                //app.UseHsts();
+                app.UseHsts();
             }
 
             app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             //app.UseStatusCodePages(async context =>
             //{
@@ -102,8 +100,6 @@ namespace AsrSystem
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
-
             app.UseAuthentication();
 
             app.UseMvc(routes =>

@@ -121,21 +121,24 @@ namespace AsrSystem.Areas.Identity.Pages.Account
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
                 var id = Input.Email.Substring(0, Input.Email.IndexOf('@'));
 
+                if (await _context.Staff.FindAsync(id) == null)
+                    await _context.Staff.AddAsync(new Staff { StaffID = id, Email = Input.Email, Name = id });
+                user.StaffID = id;
+
+                await _context.SaveChangesAsync();  // save the aspNetUser and save Staff first
+           
                 var result = await _userManager.CreateAsync(user);
 
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, Constants.StaffRole);
+                    // add login record to db
+                    result = await _userManager.AddLoginAsync(user, new UserLoginInfo(info.LoginProvider, info.ProviderKey, info.ProviderDisplayName));
+                    
+                    await _userManager.AddToRoleAsync(user, Constants.StaffRole);   // assign a role to user (foreign key = staffRole)
 
                     _logger.LogInformation("User created a new account with password.");
 
                     await _signInManager.SignInAsync(user, false);
-
-                    if (await _context.Staff.FindAsync(id) == null)
-                        await _context.Staff.AddAsync(new Staff { StaffID = id, Email = Input.Email, Name = id });
-                    user.StaffID = id;
-
-                    await _context.SaveChangesAsync();
 
                     return LocalRedirect(returnUrl);
                 }
