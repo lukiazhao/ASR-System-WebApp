@@ -1,33 +1,32 @@
 <h1>Slot Data</h1>
-
 <p>This component demonstrates fetching Slot data from the server.</p>
-
 <p *ngIf="!slotList"><em>Loading...</em></p>
-
 <p>
   <a [routerLink]="['/add-slot']">Create New</a>
 </p>
-
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Search by Staff/Student ID"
+         style="width:300px" [(ngModel)]="searchString"/>
+</div>
 <table class='table' *ngIf="slotList">
   <thead>
-  <tr>
-    <th>Room ID</th>
-    <th>Start Time</th>
-    <th>Staff ID</th>
-    <th>Student ID</th>
-  </tr>
+    <tr>
+      <th>Room ID</th>
+      <th>Start Time</th>
+      <th>Staff ID</th>
+      <th>Student ID</th>
+    </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let slot of slotList">
-    <td>{{ slot.roomId }}</td>
-    <td>{{ slot.startTime }}</td>
-    <td>{{ slot.staffId }}</td>
-    <td>{{ slot.studentId }}</td>
-    <td><a [routerLink]="" (click)="delete(slot.roomId, slot.startTime)">Delete</a></td>
-    <!--<td>
-      <a [routerLink]="['/employee/edit/', emp.employeeId]">Edit</a> |
-      <a [routerLink]="" (click)="delete(emp.employeeId)">Delete</a>
-    </td>-->
-  </tr>
+    <tr *ngFor="let slot of slotList | slotFilter: searchString">
+      <td>{{ slot.roomId }}</td>
+      <td>{{ slot.startTime }}</td>
+      <td>{{ slot.staffId }}</td>
+      <td>{{ slot.studentId }}</td>
+      <td>
+        <a [routerLink]="['/slot/edit/', slot.roomId, slot.startTime]">Edit</a> |
+        <a [routerLink]="" (click)="delete(slot.roomId, slot.startTime)">Delete</a>
+      </td>
+    </tr>
   </tbody>
 </table>

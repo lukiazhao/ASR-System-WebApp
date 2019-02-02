@@ -101,7 +101,7 @@ namespace AsrSystem
             //});   // call before request handling middlewares
 
             app.UseStaticFiles();
-            //app.UseCookiePolicy();
+            app.UseCookiePolicy();
 
 
             app.UseAuthentication();

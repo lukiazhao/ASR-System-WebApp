@@ -98,6 +98,7 @@ namespace AsrSystem.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+
                     await _userManager.AddToRoleAsync(user, id.StartsWith('e') ? Constants.StaffRole :
                         id.StartsWith('s') ? Constants.StudentRole : throw new Exception());
 

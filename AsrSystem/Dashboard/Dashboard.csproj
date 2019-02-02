@@ -35,11 +35,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\Components\fetch-slot\slot-filter.pipe.ts" />
+    <None Remove="ClientApp\src\app\Components\fetch-slot\slotData.ts" />
     <None Remove="ClientApp\src\app\Services\room.service.ts" />
     <None Remove="ClientApp\src\app\Services\slot.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\Components\fetch-slot\slot-filter.pipe.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Components\fetch-slot\slotData.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Services\room.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Services\slot.service.ts" />
   </ItemGroup>

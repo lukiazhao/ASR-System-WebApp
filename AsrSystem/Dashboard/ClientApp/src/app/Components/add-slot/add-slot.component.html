@@ -2,36 +2,67 @@
 <h3>Slot</h3>
 <hr />
 <form [formGroup]="slotForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
-  <div class="form-group row">
-    <label class=" control-label col-md-12">Room ID</label>
-    <div class="col-md-4"> <input class="form-control" type="text" formControlName="roomId"> </div>
-    <!--<span class="text-danger" *ngIf="roomId.invalid && formDir.submitted">
-      Room ID is required.
-    </span>-->
-  </div>
-  <div class="form-group row">
-    <label class=" control-label col-md-12">Start Time</label>
-    <div class="col-md-4"> <input class="form-control" type="datetime" formControlName="startTime"> </div>
-    <!--<span class="text-danger" *ngIf="startTime.invalid && formDir.submitted">
-      Start Time is required.
-    </span>-->
-  </div>
-  <div class="form-group row">
-    <label class=" control-label col-md-12">Staff ID</label>
-    <div class="col-md-4"> <input class="form-control" type="text" formControlName="staffId"> </div>
-    <!--<span class="text-danger" *ngIf="staffId.invalid && formDir.submitted">
-      Staff ID is required.
-    </span>-->
-  </div>
 
   <div class="form-group row">
-    <label class=" control-label col-md-12">Student ID</label>
-    <div class="col-md-4"> <input class="form-control" type="text" formControlName="studentId"> </div>
-    <!--<span class="text-danger" *ngIf="studentId.invalid && formDir.submitted">
-    </span>-->
+    <label class=" control-label col-md-12">Room ID</label>
+    <div class="col-md-4">
+      <div *ngIf="localRoomId else createRoom">
+        <!-- if roomid != null -->
+        <input class="form-control" type="text" formControlName="roomId" readonly />
+      </div>
+      <ng-template #createRoom>
+        <select class="form-control" data-val="true" formControlName="roomId">
+          <option value="">--select room--</option>
+          <option *ngFor="let room of roomList" value={{room.roomId}}>{{room.roomId}}</option>
+        </select>
+      </ng-template>
+    </div>
+    <div>
+      <span class="text-danger" *ngIf="roomId.invalid && formDir.submitted">Room is required.</span>
+    </div>
+
   </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-default">Save</button>
-    <button class="btn" (click)="cancel()">Cancel</button>
-  </div>
+
+    <div class="form-group row">
+      <label class="control-label col-md-12" for="startTime">Start Time</label>
+      <div class="col-md-4">
+        <div *ngIf="localStartTime else createTime">
+          <input class="form-control" type="datetime-local" formControlName="startTime" readonly />
+        </div>
+        <ng-template #createTime>
+          <div>
+            <input class="form-control" type="datetime-local" formControlName="startTime" />
+          </div>
+        </ng-template>
+      </div>
+      <div>
+        <span class="text-danger" *ngIf="startTime.invalid && formDir.submitted">
+          start time is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="control-label col-md-12" for="staffId">Staff ID</label>
+      <div class="col-md-4">
+        <!--<input class="form-control" type="text" formControlName="staffId">-->
+        <select class="form-control" data-val="true" formControlName="staffId">
+          <option value="">--select Staff--</option>
+          <option *ngFor="let staff of staffList" value={{staff.staffId}}>{{staff.staffId}}</option>
+        </select>
+      </div>
+      <span class="text-danger" *ngIf="staffId.invalid && formDir.submitted">
+        Staff ID is required.
+      </span>
+    </div>
+
+    <div class="form-group row">
+      <label class=" control-label col-md-12" for="StudentId">Student ID</label>
+      <label class=" control-label col-md-12">(Set this row empty means cancel the booking)</label>
+      <div class="col-md-4"> <input class="form-control" type="text" formControlName="studentId"> </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">Save</button>
+      <button class="btn" (click)="cancel()">Cancel</button>
+    </div>
 </form>
