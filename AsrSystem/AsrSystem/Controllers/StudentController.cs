@@ -44,6 +44,7 @@ namespace AsrSystem.Controllers
         }
 
         //just for testing
+        [HandleException]
         public async Task<IActionResult> Book(string roomid, DateTime starttime)
         {
             var tartgetSlot = await _context.Slot.FirstOrDefaultAsync(slot => slot.RoomID == roomid
@@ -85,7 +86,7 @@ namespace AsrSystem.Controllers
             if(_context.Slot.Any(x => x.StudentID == CurrentStudent().StudentID 
             && x.StartTime.Day == startTime.Day))
             {
-                throw new Exception();
+                throw new Exception("A student can only book one slot per day.");
             }
         }
     }

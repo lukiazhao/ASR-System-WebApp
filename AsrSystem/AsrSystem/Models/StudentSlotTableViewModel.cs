@@ -11,6 +11,8 @@ namespace AsrSystem.Models
 
         [DisplayName("Check Staff Availability: ")]
         public string SelectedStaffID { get; set; }
+
+        [DisplayName("Staff Name    Staff ID")]
         public IEnumerable<String> StaffIDNames { get; set; }
     }
 }

@@ -49,6 +49,7 @@ namespace AsrSystem.Controllers
         public async Task<IActionResult> CreateSlot([Bind("RoomID,StartTime,StaffID")] Slot slot)
         {
             var user = this.User.Identity.Name.Substring(0, 6);
+            slot.StaffID = user;
             if (ModelState.IsValid)
             {
                 //Check if room is within range
@@ -58,8 +59,15 @@ namespace AsrSystem.Controllers
                 // Each room can be booked for a maximum of 2 slots per day.
                 CheckRoomExistingSlotsByDay(slot.RoomID, slot.StartTime);
 
-                _context.Add(slot);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    _context.Add(slot);
+                    await _context.SaveChangesAsync();
+                }
+                catch
+                {
+                    throw new Exception("Slot already exist."); 
+                }
 
                 return RedirectToAction(nameof(SlotTable));
             }
@@ -121,7 +129,8 @@ namespace AsrSystem.Controllers
             return View(await _context.Staff.ToListAsync());
         }
 
-        
+
+        [HandleException]
         public async Task<IActionResult> DeleteSlot(string roomID, DateTime startTime)
         {
             var slot = await _context.Slot.FirstOrDefaultAsync(x => x.RoomID == roomID && x.StartTime == startTime);

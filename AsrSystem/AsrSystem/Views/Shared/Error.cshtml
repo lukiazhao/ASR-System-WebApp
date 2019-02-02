@@ -2,7 +2,22 @@
     Exception ex = ViewData["HandleException"] as Exception;
 }
 
+@{
+    ViewData["Title"] = "Error";
+}
+
+<br />
+<br />
+
+<h2>@ViewData["Title"]</h2>
+
+<br />
 
 <h1>@ex.Message</h1>
 
-@*<div>@ex.StackTrace</div>*@
+<br />
+<br />
+<br />
+<p>
+    <a asp-controller="home" asp-action="Index">Return to Home</a>
+</p>

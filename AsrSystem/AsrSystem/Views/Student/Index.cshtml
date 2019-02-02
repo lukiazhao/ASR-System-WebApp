@@ -7,6 +7,9 @@
 <h2>@ViewData["Title"]</h2>
 <h2>Manage Your Booking</h2>
 <br />
+<br />
+<br />
+
 
 <form asp-action="Index">
     <p>
@@ -17,38 +20,6 @@
 
 <br />
 <br />
-
-<div class="form-group">
-    @Html.LabelFor(x => Model.SelectedStaffID, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-5">
-        @Html.DropDownListFor(x => Model.StaffIDNames, new SelectList(Model.StaffIDNames, "Text"),
-             htmlAttributes: new { @class = "form-control", id = "SelectedStaff" })
-    </div>
-</div>
-
-<a asp-action="Index" asp-route-StaffSearchString="@Model.SelectedStaffID">Search</a>
-
-<body>
-    @using (Html.BeginForm("Index", "Student", FormMethod.Post))
-    {
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <td>Gender: </td>
-                <td>
-                    @Html.DropDownListFor(m => m.SelectedStaffID, new SelectList(Model.StaffIDNames, "Text"), "Please select")
-                </td>
-            </tr> 
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Submit" /></td>
-            </tr>
-        </table>
-    }
-</body>
-
-<br />
-<br />
-
 
 
 <table class="table">
@@ -62,6 +33,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Slots.FirstOrDefault().StaffID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slots.FirstOrDefault().Staff.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Slots.FirstOrDefault().StudentID)
@@ -79,7 +53,10 @@
                     @Html.DisplayFor(modelItem => item.StartTime)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StaffID)
+                    @Html.DisplayFor(modelItem => item.Staff.StaffID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff.Name)
                 </td>
                 <td>
                     @if (item.StudentID != null)
