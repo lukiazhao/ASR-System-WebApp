@@ -18,6 +18,7 @@ export class AddSlotComponent implements OnInit {
   //studentId: string;
   roomList: Array<any> = [];
   staffList: Array<any> = [];
+  studentList: Array<any> = [];
   errorMessage: any;
 
   constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute, private _slotService: SlotService,
@@ -40,6 +41,8 @@ export class AddSlotComponent implements OnInit {
   {
     this._roomService.getRoomList().subscribe(data => this.roomList = data);
     this._slotService.getStaffList().subscribe(data => this.staffList = data);
+    this._slotService.getStudentList().subscribe(data => this.studentList = data);
+
     if (this.localRoomId != null) {
       this.title = "Edit";
       this._slotService.getSlotByRoomTime(this.localRoomId + "_" + this.localStartTime).subscribe(resp => this.slotForm.setValue(resp),
@@ -56,7 +59,14 @@ export class AddSlotComponent implements OnInit {
     if(this.title === "Create")
     {
       this._slotService.saveSlot(this.slotForm.value).subscribe((data) => {
-        this._router.navigate(["/fetch-slot"]);
+        if (data === 2) {
+          const ans = confirm("Internal Error: Please try again or check if slot already exists. ");
+          if (ans) {
+            this._router.navigate(["add-slot"]);
+          } else {
+            this._router.navigate(["/fetch-slot"]);
+          }
+        }
       }, error => this.errorMessage = error);
     }
     else if(this.title === "Edit")

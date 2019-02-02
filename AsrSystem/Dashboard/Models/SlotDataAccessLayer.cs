@@ -27,16 +27,32 @@ namespace Dashboard.Models
 
         public int UpdateSlot(Slot slot)
         {
-            db.Entry(slot).State = EntityState.Modified;
-            db.SaveChanges();
-            return 1;
+            try
+            {
+                db.Entry(slot).State = EntityState.Modified;
+                db.SaveChanges();
+                return 1;
+            }
+            catch
+            {
+                return 2;
+            }
+           
         }
 
         public int AddSlot(Slot slot)
         {
-            db.Slot.Add(slot);
-            db.SaveChanges();
-            return 1;
+            try
+            {
+                db.Slot.Add(slot);
+                db.SaveChanges();
+                return 1;
+            }
+            catch
+            {
+                return 2;
+            }
+           
         }
 
         public int DeleteSlot(string key)

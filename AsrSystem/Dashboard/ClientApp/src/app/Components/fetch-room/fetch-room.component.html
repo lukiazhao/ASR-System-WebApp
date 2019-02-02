@@ -1,7 +1,5 @@
 <h1>Room Data</h1>
 
-<p>This component demonstrates fetching Slot data from the server.</p>
-
 <p *ngIf="!roomList"><em>Loading...</em></p>
 
 <p>
@@ -15,14 +13,11 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let room of roomList">
-    <td>{{ room.roomId }}</td>
-
-    <td>
-    <!--<td>
-      <a [routerLink]="['/employee/edit/', emp.employeeId]">Edit</a> |
-      <a [routerLink]="" (click)="delete(emp.employeeId)">Delete</a>
-    </td>-->
-  </tr>
+    <tr *ngFor="let room of roomList">
+      <td>{{ room.roomId }}</td>
+      <td>
+        <a [routerLink]="['/room/edit/', room.roomId]">Edit</a>
+      </td>
+    </tr>
   </tbody>
 </table>

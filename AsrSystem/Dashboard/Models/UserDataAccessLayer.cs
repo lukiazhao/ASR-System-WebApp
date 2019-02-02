@@ -13,5 +13,10 @@ namespace Dashboard.Models
         {
             return db.Staff.ToList();
         }
+
+        public IEnumerable<Student> GetAllStudents()
+        {
+            return db.Student.ToList();
+        }
     }
 }

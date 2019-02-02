@@ -5,6 +5,7 @@ D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.dll
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.pdb
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.Views.dll
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.Views.pdb
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.csprojAssemblyReference.cache
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.csproj.CoreCompileInputs.cache
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.RazorAssemblyInfo.cache
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.RazorAssemblyInfo.cs
@@ -47,4 +48,3 @@ D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.Views.
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.dll
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.pdb
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.csproj.CopyComplete
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.csprojAssemblyReference.cache

@@ -78,7 +78,7 @@ Write(ViewData["Title"]);
             WriteLiteral("</h2>\r\n<h2>Manage Your Booking</h2>\r\n<br />\r\n\r\n");
             EndContext();
             BeginContext(152, 184, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c9da893c42274bcaa6e8e8f1a8c6e56c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5559e90d5f6c46c89c403c24424e5308", async() => {
                 BeginContext(177, 152, true);
                 WriteLiteral("\r\n    <p>\r\n        Search Available Slots by Staff: <input type=\"text\" name=\"StaffSearchString\">\r\n        <input type=\"submit\" value=\"Go\" />\r\n    </p>\r\n");
                 EndContext();
@@ -123,7 +123,7 @@ Write(Html.LabelFor(x => Model.SelectedStaffID, htmlAttributes: new { @class = "
             WriteLiteral("\r\n    </div>\r\n</div>\r\n\r\n");
             EndContext();
             BeginContext(726, 85, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "277b1371c3804a1386e3eadf5f613d9e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5176e473b2c34dd28450aec8bb7cbe45", async() => {
                 BeginContext(801, 6, true);
                 WriteLiteral("Search");
                 EndContext();
@@ -158,7 +158,7 @@ Write(Html.LabelFor(x => Model.SelectedStaffID, htmlAttributes: new { @class = "
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(815, 537, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f07dc7c454814c2b92e483a3f7fdcdea", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ba390c3896fc4ca09a2ae2de5b2d3022", async() => {
                 BeginContext(821, 2, true);
                 WriteLiteral("\r\n");
                 EndContext();
@@ -303,7 +303,7 @@ Write(Html.LabelFor(x => Model.SelectedStaffID, htmlAttributes: new { @class = "
             WriteLiteral("                        ");
             EndContext();
             BeginContext(2556, 112, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1680159765a047f2964a08f34e9c37bb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bfe6250b5c344be3989476434103a01a", async() => {
                 BeginContext(2653, 11, true);
                 WriteLiteral("Cancel Book");
                 EndContext();
@@ -357,7 +357,7 @@ Write(Html.LabelFor(x => Model.SelectedStaffID, htmlAttributes: new { @class = "
             WriteLiteral("                        ");
             EndContext();
             BeginContext(2766, 99, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "621dd969d4284599a12cbbefc2bf061c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ea4c322faa1046ee87bbff49b4895283", async() => {
                 BeginContext(2857, 4, true);
                 WriteLiteral("Book");
                 EndContext();
