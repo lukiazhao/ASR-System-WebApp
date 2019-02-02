@@ -24,16 +24,23 @@ namespace AsrSystem.Controllers
         // GET: Movies
         public async Task<IActionResult> Index(string staffSearchString)
         {
-            if(!String.IsNullOrEmpty(staffSearchString))
+            StudentSlotTableViewModel studentSlotTableViewModel = new StudentSlotTableViewModel
             {
-                return View(await _context.Slot.Where(x => x.StudentID == null 
-                && x.StaffID == staffSearchString && x.StartTime >= DateTime.Now).ToListAsync());
+                StaffIDNames = await _context.Staff.Select(staff => (staff.StaffID + "    " + staff.Name)).ToListAsync()
+            };
+
+            if (!String.IsNullOrEmpty(staffSearchString))
+            {
+                studentSlotTableViewModel.Slots = await _context.Slot.Where(x => x.StudentID == null
+                  && x.StaffID == staffSearchString && x.StartTime >= DateTime.Now).ToListAsync();
             }
             else
             {
-                return View(await _context.Slot.Where(x => (x.StudentID == null 
-                || x.StudentID == CurrentStudent().StudentID) && x.StartTime >= DateTime.Now).ToListAsync());
+                studentSlotTableViewModel.Slots = await _context.Slot.Where(x => (x.StudentID == null
+                || x.StudentID == CurrentStudent().StudentID) && x.StartTime >= DateTime.Now).ToListAsync();
             }
+
+            return View(studentSlotTableViewModel);
         }
 
         //just for testing
