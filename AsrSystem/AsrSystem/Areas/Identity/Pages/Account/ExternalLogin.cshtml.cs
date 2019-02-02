@@ -108,16 +108,20 @@ namespace AsrSystem.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostConfirmationAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
+
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info == null)
+            {
+                ErrorMessage = "Error loading external login information during confirmation.";
+                return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
+            }
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
                 var id = Input.Email.Substring(0, Input.Email.IndexOf('@'));
 
-                if (await _context.Staff.FindAsync(id) == null)
-                    await _context.Staff.AddAsync(new Staff { StaffID = id, Email = Input.Email, Name = id });
-                user.StaffID = id;
-
-                await _context.SaveChangesAsync();
+               
 
                 var result = await _userManager.CreateAsync(user);
 
@@ -129,6 +133,12 @@ namespace AsrSystem.Areas.Identity.Pages.Account
 
                     await _signInManager.SignInAsync(user, false);
 
+                    if (await _context.Staff.FindAsync(id) == null)
+                        await _context.Staff.AddAsync(new Staff { StaffID = id, Email = Input.Email, Name = id });
+                    user.StaffID = id;
+
+                    await _context.SaveChangesAsync();
+
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)
@@ -138,6 +148,8 @@ namespace AsrSystem.Areas.Identity.Pages.Account
             }
 
             // If we got this far, something failed, redisplay form
+            LoginProvider = info.LoginProvider;
+            ReturnUrl = returnUrl;
             return Page();
         }
     }
