@@ -48,3 +48,4 @@ D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.Views.
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.dll
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.pdb
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.csproj.CopyComplete
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Login.g.cshtml.cs

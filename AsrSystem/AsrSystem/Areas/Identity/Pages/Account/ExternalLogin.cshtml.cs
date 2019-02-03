@@ -133,7 +133,7 @@ namespace AsrSystem.Areas.Identity.Pages.Account
                 {
                     // add login record to db
                     result = await _userManager.AddLoginAsync(user, new UserLoginInfo(info.LoginProvider, info.ProviderKey, info.ProviderDisplayName));
-                    
+
                     await _userManager.AddToRoleAsync(user, Constants.StaffRole);   // assign a role to user (foreign key = staffRole)
 
                     _logger.LogInformation("User created a new account with password.");

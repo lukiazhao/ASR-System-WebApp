@@ -2,10 +2,10 @@
 
 @{
     ViewData["Title"] = "CreateSlot";
+
 }
 
 <h2>Create</h2>
-
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -13,6 +13,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="RoomID" class="control-label"></label>
+               
+                @*@Html.DropDownListFor(m => m.RoomID, new SelectList((IEnumerable<Room>) ViewData["Room"]), "Select Room", new { @class = "form-control" })*@
                 <input asp-for="RoomID" class="form-control" />
                 @*@Html.DropDownListFor(m => m.Rooms, new SelectList(Model.Rooms.Select(x => x.RoomID)), "Select Room")*@
                 <span asp-validation-for="RoomID" class="text-danger"></span>

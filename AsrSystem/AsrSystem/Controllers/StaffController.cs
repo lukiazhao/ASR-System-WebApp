@@ -8,6 +8,7 @@ using AsrSystem.Data;
 using AsrSystem.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AsrSystem.Controllers
@@ -25,7 +26,6 @@ namespace AsrSystem.Controllers
 
         public IActionResult Index()
         {
-
             return View();
         }
 
@@ -34,7 +34,6 @@ namespace AsrSystem.Controllers
             // filter this staff's created slots
             var staffID = this.User.Identity.Name.Substring(0, User.Identity.Name.IndexOf('@'));   
             List<Slot> slots = await _context.Slot.Where(x => x.StaffID == staffID).ToListAsync();
-            ViewData["Message"] = staffID;
             return View(slots);
         }
 
