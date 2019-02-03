@@ -41,40 +41,41 @@
 <br />
 <br />
 
-<h4>Q: Is there any limitation for staffs to create/delete slot?</h4>
-<h4>A: </h4>
-<p>
-    Yes. There are five rules established to limit creating or deleting slots:
-    1. A staff member can book a maximum of 4 slots per day. <br />
-    2. The slots must be booked between the school working hours of 9am to 2pm and
-    will always be booked at the start of the hour, e.g., 10:00am, 1:00pm, etc... <br />
-    3. Each room can be booked for a maximum of 2 slots per day. <br />
-    4. A staff member cannot delete a slot once it has been booked by a student. <br />
-</p>
-
-<br />
-<br />
-
-<h4>Q: What are the rules for student to book a slot?</h4>
-<h4>A: </h4>
-<p>
-    If you are a student, please make sure:<br />
-    1. You can only make 1 booking per day. <br />
-    2. A slot can have a maximum of 1 student booked into it. <br />
-</p>
-
-<br />
-<br />
-
-<h4>Q: Why there are so many rules??</h4>
-<h4>A: </h4>
-<p>
-    Who knows.
+@if ((int)ViewData["FAQType"] == 1)
+{
+    <h3>--Staff Question--</h3>
     <br />
-</p>
+
+    <h4>Q: Is there any limitation for staffs to create/delete slot?</h4>
+    <h4>A: </h4>
+    <p>
+        Yes. There are five rules established to limit creating or deleting slots:
+        1. A staff member can book a maximum of 4 slots per day. <br />
+        2. The slots must be booked between the school working hours of 9am to 2pm and
+        will always be booked at the start of the hour, e.g., 10:00am, 1:00pm, etc... <br />
+        3. Each room can be booked for a maximum of 2 slots per day. <br />
+        4. A staff member cannot delete a slot once it has been booked by a student. <br />
+    </p>
+}
+else if ((int)ViewData["FAQType"] == 2)
+{
+    <h3>--Student Question--</h3>
+    <br />
+    <h4>Q: What are the rules for student to book a slot?</h4>
+    <h4>A: </h4>
+    <p>
+        If you are a student, please make sure:<br />
+        1. You can only make 1 booking per day. <br />
+        2. A slot can have a maximum of 1 student booked into it. <br />
+    </p>
+}
+
 <br />
 <br />
+
 <br />
+<br />
+
 
 <address>
     RMIT University<br />

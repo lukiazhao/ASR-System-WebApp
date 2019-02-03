@@ -179,5 +179,12 @@ namespace AsrSystem.Controllers
                                    && slot.StartTime.Day == upcomingSlotDateTime.Day) == 4)
                 throw new Exception("A staff member can book a maximum of 4 slots per day.");
         }
+
+        public IActionResult FAQ()
+        {
+            ViewData["Message"] = "Your contact page.";
+
+            return View();
+        }
     }
 }

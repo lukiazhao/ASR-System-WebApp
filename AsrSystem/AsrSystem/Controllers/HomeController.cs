@@ -35,10 +35,10 @@ namespace AsrSystem.Controllers
             }
         }
        
-        public IActionResult FAQ()
+        public IActionResult FAQ(int type)
         {
             ViewData["Message"] = "Your contact page.";
-
+            ViewData["FAQType"] = type;
             return View();
         }
 
