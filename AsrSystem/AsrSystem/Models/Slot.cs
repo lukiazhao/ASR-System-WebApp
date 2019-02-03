@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 
 namespace AsrSystem.Models
 {
+    /// <summary>
+    /// Slot. Indicate a single slot. Include validation.
+    /// </summary>
     public class Slot
     {
+        /// <summary>
+        /// Slot key set. Use to build dictionary of slot. RoomID and starttime are
+        /// primary key of Slot
+        /// </summary>
         [Required]
         public string RoomID { get; set; }
         public virtual Room Room { get; set; }

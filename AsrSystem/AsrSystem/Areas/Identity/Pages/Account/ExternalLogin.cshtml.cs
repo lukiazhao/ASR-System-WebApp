@@ -48,6 +48,9 @@ namespace AsrSystem.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+
+            [Required]
+            public string Name { get; set; }
         }
         public IActionResult OnGetAsync()
         {
@@ -122,7 +125,7 @@ namespace AsrSystem.Areas.Identity.Pages.Account
                 var id = Input.Email.Substring(0, Input.Email.IndexOf('@'));
 
                 if (await _context.Staff.FindAsync(id) == null)
-                    await _context.Staff.AddAsync(new Staff { StaffID = id, Email = Input.Email, Name = id });
+                    await _context.Staff.AddAsync(new Staff { StaffID = id, Email = Input.Email, Name = Input.Name });
                 user.StaffID = id;
 
                 await _context.SaveChangesAsync();  // save the aspNetUser and save Staff first

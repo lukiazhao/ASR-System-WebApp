@@ -22,22 +22,17 @@
             <div class="form-group">
                 <label asp-for="StartTime" class="control-label"></label>
                 <input asp-for="StartTime" class="form-control" />
-
                 <span class="note">School working hours are 9am to 2pm</span>
                 <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="StaffID" class="control-label"></label>
-                <input asp-for="StaffID" class="form-control" />
+                @*<div>
+                    @Html.TextBoxFor(m => m.StaffID, new { @class = "form-control", @Value = User.Identity.Name})
+                </div>*@
+                <input asp-for="StaffID" class="form-control" value="@User.Identity.Name.Substring(0, User.Identity.Name.IndexOf('@'))" readonly/>
                 <span asp-validation-for="StaffID" class="text-danger"></span>
             </div>
-
-            @*<div class="form-group">
-                    <label asp-for="StudentID" class="control-label"></label>
-                    <input asp-for="StudentID" class="form-control" />
-                    <span asp-validation-for="StudentID" class="text-danger"></span>
-                </div>*@
-
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

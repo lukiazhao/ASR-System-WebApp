@@ -1,12 +1,15 @@
 ﻿@model AsrSystem.Models.Slot
 
 @{
-    ViewData["Title"] = "Student Menu";
+    ViewData["Title"] = Model.Student.Name;
 }
+<br />
 
 <h2>@ViewData["Title"]</h2>
 <h2>Booking Successfully.</h2>
-<h2>@Model.StaffID</h2>
+<br />
+<br />
+<br />
 
 <p>
     <a asp-action="Index">Return to slot list</a>

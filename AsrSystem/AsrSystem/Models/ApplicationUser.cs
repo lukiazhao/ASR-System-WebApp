@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AsrSystem.Models
 {
+    /// <summary>
+    /// Application user. Self defined user implementation with role info
+    /// Only one type of ID owned by an ApplicationUser
+    /// </summary>
     public class ApplicationUser : IdentityUser
     {
         public string StudentID { get; set; }

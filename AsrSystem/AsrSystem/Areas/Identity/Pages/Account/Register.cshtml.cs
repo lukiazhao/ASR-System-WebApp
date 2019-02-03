@@ -98,15 +98,16 @@ namespace AsrSystem.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-
                     await _userManager.AddToRoleAsync(user, id.StartsWith('e') ? Constants.StaffRole :
                         id.StartsWith('s') ? Constants.StudentRole : throw new Exception());
 
                     _logger.LogInformation("User created a new account with password.");
 
                     await _signInManager.SignInAsync(user, false);
+                    return RedirectToAction("RegisterSuccess", "Home");
 
-                    return LocalRedirect(returnUrl);
+
+                    //return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)
                 {

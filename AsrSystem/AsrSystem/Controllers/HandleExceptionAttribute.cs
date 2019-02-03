@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace AsrSystem.Controllers
 {
+    //Controller to trigger error page in middleware
     public class HandleExceptionAttribute : ExceptionFilterAttribute
     {
         public override void OnException(ExceptionContext context)
@@ -17,6 +18,5 @@ namespace AsrSystem.Controllers
             context.Result = result;
             context.ExceptionHandled = true;
         }
-
     }
 }

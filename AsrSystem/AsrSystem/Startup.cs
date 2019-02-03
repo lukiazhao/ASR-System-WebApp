@@ -40,10 +40,10 @@ namespace AsrSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<MvcOptions>(options =>
-            {
-                options.Filters.Add(new RequireHttpsAttribute());
-            });
+            //services.Configure<MvcOptions>(options =>
+            //{
+            //    options.Filters.Add(new RequireHttpsAttribute());
+            //});
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -87,6 +87,7 @@ namespace AsrSystem
             }
 
             app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
+
             app.UseHttpsRedirection();
 
             //app.UseStatusCodePages(async context =>
