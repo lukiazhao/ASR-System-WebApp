@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace AsrSystem.Models
 {
+    /// <summary>
+    /// Room. 
+    /// </summary>
     public class Room
     {
         [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.None)]

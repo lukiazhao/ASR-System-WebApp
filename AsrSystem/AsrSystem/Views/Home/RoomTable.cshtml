@@ -4,6 +4,17 @@
 }
 
 <h2>Rooms</h2>
+<br />
+<br />
+
+<form asp-controller="Home" asp-action="RoomTable" method="get">
+    <p>
+        Check Room Availability on Date: <input type="date" name="SearchRoomByDate">
+        <input type="submit" value="Check" />
+    </p>
+</form>
+<br />
+<br />
 
 <table class="table">
     <thead>
@@ -14,10 +25,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var item in Model) {
-        <tr>
-            <td>@Html.DisplayFor(x => item.RoomID)</td>
-        </tr>
-            }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => item.RoomID)</td>
+            </tr>
+        }
     </tbody>
 </table>
