@@ -44,6 +44,11 @@ export class SlotService {
       .catch(this.errorHandler);
   }
 
+  getStudentList() {
+    return this._http.get(this.myAppUrl + "api/Admin/GetStudents").map((response: Response) => response.json())
+      .catch(this.errorHandler);
+  }
+
   errorHandler(error: Response) {
     console.log(error);
     return Observable.throw(error);

@@ -78,8 +78,8 @@ namespace AsrSystem.Controllers
         /// <returns>The book.</returns>
         /// <param name="roomid">Roomid.</param>
         /// <param name="starttime">Starttime.</param>
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> CancelBook(string roomid, DateTime starttime)
         {
             var tartgetSlot = _context.Slot.FirstOrDefault(slot => slot.RoomID == roomid

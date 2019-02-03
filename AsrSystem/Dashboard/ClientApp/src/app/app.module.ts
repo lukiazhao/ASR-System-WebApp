@@ -9,12 +9,6 @@ import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { NavMenuComponent } from "./nav-menu/nav-menu.component";
 import { HomeComponent } from "./home/home.component";
-import { CounterComponent } from "./counter/counter.component";
-import { FetchDataComponent } from "./fetch-data/fetch-data.component";
-
-import { EmployeeService } from "./services/employee.service";
-import { AddEmployeeComponent } from "./components/add-employee/add-employee.component";
-import { FetchEmployeeComponent } from "./components/fetch-employee/fetch-employee.component";
 
 import { SlotService } from "./services/slot.service";
 import { FetchSlotComponent } from "./components/fetch-slot/fetch-slot.component";
@@ -30,10 +24,6 @@ import { SlotFilterPipe } from "./Components/fetch-slot/slot-filter.pipe";
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
-    AddEmployeeComponent,
-    FetchEmployeeComponent,
     FetchSlotComponent,
     AddSlotComponent,
     FetchRoomComponent,
@@ -49,19 +39,15 @@ import { SlotFilterPipe } from "./Components/fetch-slot/slot-filter.pipe";
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
-      { path: "counter", component: CounterComponent },
-      { path: "fetch-data", component: FetchDataComponent },
-      { path: "fetch-employee", component: FetchEmployeeComponent },
-      { path: "add-employee", component: AddEmployeeComponent },
-      { path: "employee/edit/:id", component: AddEmployeeComponent },
       { path: "fetch-slot", component: FetchSlotComponent },
       { path: "add-slot", component: AddSlotComponent },
       { path: "slot/edit/:id1/:id2", component: AddSlotComponent },
       { path: "fetch-room", component: FetchRoomComponent },
-      { path: "add-room", component: AddRoomComponent }
+      { path: "add-room", component: AddRoomComponent },
+      { path: "room/edit/:id", component: AddRoomComponent }
     ])
   ],
-  providers: [EmployeeService, SlotService, RoomService],
+  providers: [SlotService, RoomService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

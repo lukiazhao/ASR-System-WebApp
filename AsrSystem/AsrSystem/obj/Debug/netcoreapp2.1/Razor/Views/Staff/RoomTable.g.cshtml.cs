@@ -63,7 +63,7 @@ using AsrSystem.Models;
             WriteLiteral("\r\n<h2>Rooms</h2>\r\n");
             EndContext();
             BeginContext(85, 226, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0df6057a8e3b446db3e8184a1dffd7bc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6706f72e026c40ae8edb4067a291338d", async() => {
                 BeginContext(150, 154, true);
                 WriteLiteral("\r\n    <p>\r\n        Check Room Availability on Date: <input type=\"date\" name=\"SearchRoomByDate\">\r\n        <input type=\"submit\" value=\"Check\" />\r\n    </p>\r\n");
                 EndContext();

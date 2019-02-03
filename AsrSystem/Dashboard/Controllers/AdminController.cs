@@ -66,6 +66,13 @@ namespace Dashboard.Controllers
         {
             return userDataAccessLayer.GetAllStaff();
         }
+
+        [HttpGet]
+        [Route("GetStudents")]
+        public IEnumerable<Student> GetStudents()
+        {
+            return userDataAccessLayer.GetAllStudents();
+        }
         
         /// <summary>
         ///////////////////// ROOM ////////////////////////////////////////////////////
@@ -88,9 +95,19 @@ namespace Dashboard.Controllers
 
         [HttpPut]
         [Route("EditRoom")]
-        public int EditRoom([FromBody] Room room)
+        public int EditRoom([FromBody] RoomUpdateInfoModel roominfo)
         {
-            return roomDataAccessLayer.UpdateRoom(room);
+            Console.WriteLine("Edit Room : key= " + roominfo.OldRoomId);
+            return roomDataAccessLayer.UpdateRoom(roominfo);
+        }
+
+        [HttpGet]
+        [Route("RoomDetails/{key}")]
+        public Object RoomDetails(string key)
+        {
+            return roomDataAccessLayer.GetRoom(key);
         }
     }
+
+  
 }

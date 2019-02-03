@@ -58,8 +58,13 @@
 
     <div class="form-group row">
       <label class=" control-label col-md-12" for="StudentId">Student ID</label>
-      <label class=" control-label col-md-12">(Set this row empty means cancel the booking)</label>
-      <div class="col-md-4"> <input class="form-control" type="text" formControlName="studentId"> </div>
+      <div class="col-md-4">
+        <!--<input class="form-control" type="text" formControlName="studentId">-->
+        <select class="form-control" data-val="true" formControlName="studentId">
+          <option value="">--No Student--</option>
+          <option *ngFor="let student of studentList" value={{student.studentId}}>{{student.studentId}}</option>
+        </select>
+      </div>
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-default">Save</button>

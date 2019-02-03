@@ -18,31 +18,14 @@
               </a>
             </li>
             <li [routerLinkActive]='["link-active"]'>
-              <a [routerLink]='["/counter"]' (click)='collapse()'>
-                <span class='glyphicon glyphicon-education'></span> Counter
-              </a>
-            </li>
-            <li [routerLinkActive]='["link-active"]'>
-              <a [routerLink]='["/fetch-data"]' (click)='collapse()'>
-                <span class='glyphicon glyphicon-th-list'></span> Fetch data
-              </a>
-            </li>
-            <li [routerLinkActive]='["link-active"]'>
-              <a [routerLink]='["/add-employee"]' (click)='collapse()'>
-                <span class='glyphicon glyphicon-th-list'></span> Add Employee
-              </a>
-            </li>
-
-            <li [routerLinkActive]='["link-active"]'>
-              <a [routerLink]='["/fetch-employee"]' (click)='collapse()'>
-                <span class='glyphicon glyphicon-th-list'></span> Fetch Employee
-              </a>
-            </li>
-
-            <!-- fetch slot -->
-            <li [routerLinkActive]='["link-active"]'>
               <a [routerLink]='["/fetch-slot"]' (click)='collapse()'>
                 <span class='glyphicon glyphicon-th-list'></span> Fetch Slot
+              </a>
+            </li>
+
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/add-slot"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-th-list'></span> Add Slot
               </a>
             </li>
 

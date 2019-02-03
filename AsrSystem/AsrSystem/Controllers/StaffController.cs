@@ -7,6 +7,7 @@ using AsrSystem.Data;
 using AsrSystem.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AsrSystem.Controllers
@@ -35,7 +36,6 @@ namespace AsrSystem.Controllers
             // filter this staff's created slots
             var staffID = this.User.Identity.Name.Substring(0, User.Identity.Name.IndexOf('@'));   
             List<Slot> slots = await _context.Slot.Where(x => x.StaffID == staffID).ToListAsync();
-            ViewData["Message"] = staffID;
             return View(slots);
         }
 
@@ -58,7 +58,7 @@ namespace AsrSystem.Controllers
         [HandleException]
         public async Task<IActionResult> CreateSlot([Bind("RoomID,StartTime,StaffID")] Slot slot)
         {
-            var user = this.User.Identity.Name.Substring(0, 6);
+            var user = this.User.Identity.Name.Substring(0, User.Identity.Name.IndexOf('@'));
             slot.StaffID = user;
             if (ModelState.IsValid)
             {
@@ -160,7 +160,7 @@ namespace AsrSystem.Controllers
             if (_context.Slot.Count(slot => slot.RoomID == upcomingSlotRoomID
                     && slot.StartTime.Day == upcomingSlotDateTime.Day) == 2)
             {
-                throw new Exception("Each room can only be booked for a maximum of 2 slots per day.");
+                throw new Exception("This room has been fully booked. Try another day. ");
             }
         }
 

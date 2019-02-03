@@ -1,10 +1,3 @@
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.deps.json
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.runtimeconfig.json
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.runtimeconfig.dev.json
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.dll
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.pdb
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.Views.dll
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.Views.pdb
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.csproj.CoreCompileInputs.cache
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.RazorAssemblyInfo.cache
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.RazorAssemblyInfo.cs
@@ -14,7 +7,11 @@ D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.Assemb
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.TagHelpers.input.cache
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.TagHelpers.output.cache
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.RazorCoreGenerate.cache
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.dll
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.pdb
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.csprojAssemblyReference.cache
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ExternalLogin.g.cshtml.cs
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Login.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Register.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\_ViewImports.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
@@ -22,6 +19,7 @@ D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Iden
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Home\FAQ.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Home\RegisterSuccess.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Home\RoomTable.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Home\SlotTable.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
@@ -31,7 +29,6 @@ D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Shar
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Staff\CreateSlot.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Staff\DeleteSlot.g.cshtml.cs
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Staff\FAQ.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Staff\Index.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Staff\RoomTable.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\Staff\SlotTable.g.cshtml.cs
@@ -43,8 +40,12 @@ D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\_Vie
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.RazorTargetAssemblyInfo.cache
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.RazorTargetAssemblyInfo.cs
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.deps.json
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.runtimeconfig.json
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.runtimeconfig.dev.json
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.dll
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.pdb
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.Views.dll
+D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\bin\Debug\netcoreapp2.1\AsrSystem.Views.pdb
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.Views.pdb
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.dll
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.pdb
 D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.csproj.CopyComplete
-D:\WDT\AsrSystemApp\AsrSystem\AsrSystem\obj\Debug\netcoreapp2.1\AsrSystem.csprojAssemblyReference.cache

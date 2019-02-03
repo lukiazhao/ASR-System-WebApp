@@ -1,12 +1,10 @@
 ﻿@model IEnumerable<Slot>
 
 <h2>Your Created Slots</h2>
-@*<h3>data = @ViewData["Message"]</h3>*@
-<br />
 <p>
     <a asp-action="CreateSlot">Create New Slot</a>
 </p>
-<br />
+
 
 <table class="table">
     <thead>
@@ -40,17 +38,15 @@
                 </td>
 
                 <td>
-                    <p>@Html.DisplayFor(x => item.Staff.StaffID)</p>
                     <p>@Html.DisplayFor(x => item.Staff.Name)</p>
                     <p>@Html.DisplayFor(x => item.Staff.Email)</p>
                 </td>
                 <td>
-                    <p>@Html.DisplayFor(x => item.Student.StudentID)</p>
                     <p>@Html.DisplayFor(x => item.Student.Name)</p>
                     <p>@Html.DisplayFor(x => item.Student.Email)</p>
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "DeleteSlot", new { roomID = item.RoomID, startTime = item.StartTime })
+                    @Html.ActionLink("Delete", "DeleteSlot", new { roomID = item.RoomID, startTime= item.StartTime })
                 </td>
             </tr>
         }
